@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SSFO" serializer_version="v1.0.0">
+ <sf:SMARTFORM xmlns:sf="urn:sap-com:SmartForms:2000:internal-structure" xmlns="urn:sap-com:sdixml-ifr:2000">
+  <HEADER>
+   <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+   <CAPTION>Welcome_Letter_Experience</CAPTION>
+   <MASTERLANG>E</MASTERLANG>
+   <LANGVECTOR>*</LANGVECTOR>
+   <DEVCLASS></DEVCLASS>
+   <VERSION>00001</VERSION>
+   <FIRSTUSER>DUMMY</FIRSTUSER>
+   <FIRSTDATE>2010-09-04</FIRSTDATE>
+   <FIRSTTIME>10:16:51</FIRSTTIME>
+   <LASTUSER>DUMMY</LASTUSER>
+   <LASTDATE></LASTDATE>
+   <LASTTIME></LASTTIME>
+  </HEADER>
+  <INTERFACE>
+   <item>
+    <IOTYPE>E</IOTYPE>
+    <NAME>DOCUMENT_OUTPUT_INFO</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SSFCRESPD</TYPENAME>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>E</IOTYPE>
+    <NAME>JOB_OUTPUT_INFO</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SSFCRESCL</TYPENAME>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>E</IOTYPE>
+    <NAME>JOB_OUTPUT_OPTIONS</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SSFCRESOP</TYPENAME>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>ARCHIVE_INDEX</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TOA_DARA</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>ARCHIVE_INDEX_TAB</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TSFDARA</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>ARCHIVE_PARAMETERS</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>ARC_PARAMS</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>CONTROL_PARAMETERS</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SSFCTRLOP</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>MAIL_APPL_OBJ</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SWOTOBJID</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>MAIL_RECIPIENT</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SWOTOBJID</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>MAIL_SENDER</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SWOTOBJID</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>OUTPUT_OPTIONS</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SSFCOMPOP</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>USER_SETTINGS</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TDBOOL</TYPENAME>
+    <OPTIONAL>X</OPTIONAL>
+    <BYVALUE>X</BYVALUE>
+    <DEFAULTVAL>&apos;X&apos;</DEFAULTVAL>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>I_EMP_INFO</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>ZZLT_EMP_INF</TYPENAME>
+   </item>
+   <item>
+    <IOTYPE>I</IOTYPE>
+    <NAME>I_REPID</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SY-REPID</TYPENAME>
+   </item>
+   <item>
+    <IOTYPE>X</IOTYPE>
+    <NAME>FORMATTING_ERROR</NAME>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>X</IOTYPE>
+    <NAME>INTERNAL_ERROR</NAME>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>X</IOTYPE>
+    <NAME>SEND_ERROR</NAME>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>X</IOTYPE>
+    <NAME>USER_CANCELED</NAME>
+    <STANDARD>X</STANDARD>
+   </item>
+   <item>
+    <IOTYPE>T</IOTYPE>
+    <NAME>IT_SAL</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>ZZTT_SALDATA</TYPENAME>
+   </item>
+   <item>
+    <IOTYPE>T</IOTYPE>
+    <NAME>ITM_SAL</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>ZZTT_SALDATA</TYPENAME>
+   </item>
+  </INTERFACE>
+  <GDATA>
+   <item>
+    <NAME>WA_LINES</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TLINE</TYPENAME>
+   </item>
+   <item>
+    <NAME>TD_LINES</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TLINE_TAB</TYPENAME>
+   </item>
+   <item>
+    <NAME>LV_TDNAME</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>THEAD-TDNAME</TYPENAME>
+   </item>
+   <item>
+    <NAME>LV_COUNTER</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SY-TABIX</TYPENAME>
+   </item>
+   <item>
+    <NAME>LV_LINES</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>SY-TABIX</TYPENAME>
+   </item>
+   <item>
+    <NAME>WA_EMP_INF</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>ZZLT_EMP_INF</TYPENAME>
+   </item>
+   <item>
+    <NAME>T_HEADER</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>THEAD</TYPENAME>
+   </item>
+   <item>
+    <NAME>T_HEADER_NEW</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>THEAD</TYPENAME>
+   </item>
+   <item>
+    <NAME>LV_FIRSTLINE</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TDLINE</TYPENAME>
+   </item>
+   <item>
+    <NAME>LV_FOURTHLINE</NAME>
+    <TYPING>TYPE</TYPING>
+    <TYPENAME>TDLINE</TYPENAME>
+   </item>
+  </GDATA>
+  <sf:VARHEADER>
+   <sf:item>
+    <PAGEFORMAT>DINA4</PAGEFORMAT>
+    <CPI>10.00</CPI>
+    <LPI>6.00</LPI>
+    <STDSTYLE>Z6_SF</STDSTYLE>
+    <sf:PAGETREE>
+     <sf:NODE>
+      <NODETYPE>RP</NODETYPE>
+      <sf:SUCC>
+       <sf:item>
+        <sf:NODE>
+         <NODETYPE>PA</NODETYPE>
+         <sf:OBJ>
+          <sf:PAGE>
+           <NAME>
+            <INAME>FIRST_PAGE</INAME>
+           </NAME>
+           <CAPTION>FIRST PAGE</CAPTION>
+           <NEXTPAGE>
+            <INAME>FIRST_PAGE</INAME>
+           </NEXTPAGE>
+           <NUMB_MODE>I</NUMB_MODE>
+           <NUMB_TYPE>A</NUMB_TYPE>
+           <PAGEORTN>P</PAGEORTN>
+           <T_CAPTION>
+            <item>
+             <LANGU>E</LANGU>
+             <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+             <OBJTYPE>PA</OBJTYPE>
+             <INAME>FIRST_PAGE</INAME>
+             <CAPTION>FIRST PAGE</CAPTION>
+            </item>
+           </T_CAPTION>
+          </sf:PAGE>
+         </sf:OBJ>
+         <sf:SUCC>
+          <sf:item>
+           <sf:NODE>
+            <NODETYPE>WI</NODETYPE>
+            <sf:OBJ>
+             <sf:WINDOW>
+              <NAME>
+               <INAME>MAIN</INAME>
+              </NAME>
+              <CAPTION>Main Window</CAPTION>
+              <WTYPE>M</WTYPE>
+              <T_CAPTION>
+               <item>
+                <LANGU>E</LANGU>
+                <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                <OBJTYPE>WI</OBJTYPE>
+                <INAME>MAIN</INAME>
+                <CAPTION>Main Window</CAPTION>
+               </item>
+              </T_CAPTION>
+              <sf:PROC_CTRL>
+               <sf:NODE>
+                <NODETYPE>RC</NODETYPE>
+                <sf:SUCC>
+                 <sf:item>
+                  <sf:NODE>
+                   <NODETYPE>CO</NODETYPE>
+                   <sf:OBJ>
+                    <sf:CODE>
+                     <NAME>
+                      <INAME>RETRIEVE_DATA</INAME>
+                     </NAME>
+                     <CAPTION>New Program LineS</CAPTION>
+                     <PLIST>
+                      <item>
+                       <OPD>I_EMP_INFO</OPD>
+                       <OUTIN>I</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>I_REPID</OPD>
+                       <OUTIN>I</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>WA_EMP_INF</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>TD_LINES</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>T_HEADER</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>LV_LINES</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>WA_LINES</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>LV_FIRSTLINE</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                      <item>
+                       <OPD>LV_FOURTHLINE</OPD>
+                       <OUTIN>O</OUTIN>
+                      </item>
+                     </PLIST>
+                     <CODE>
+                      <item/>
+                      <item>WA_EMP_INF = I_EMP_INFO.</item>
+                      <item/>
+                      <item>  CLEAR TD_LINES.</item>
+                      <item/>
+                      <item>  CALL FUNCTION &apos;READ_TEXT&apos;</item>
+                      <item>    EXPORTING</item>
+                      <item>*      CLIENT                        = SY-MANDT</item>
+                      <item>      ID                            = &apos;ST&apos;</item>
+                      <item>      LANGUAGE                      = SY-LANGU</item>
+                      <item>      NAME                          = &apos;ZHRST_WELCOME_LETTER_EXP&apos;</item>
+                      <item>      OBJECT                        = &apos;TEXT&apos;</item>
+                      <item>*      ARCHIVE_HANDLE                = 0</item>
+                      <item>*      LOCAL_CAT                     = &apos; &apos;</item>
+                      <item>    IMPORTING</item>
+                      <item>      HEADER                        = t_header</item>
+                      <item>    TABLES</item>
+                      <item>      LINES                         = TD_LINES</item>
+                      <item>*    EXCEPTIONS</item>
+                      <item>*      ID                            = 1</item>
+                      <item>*      LANGUAGE                      = 2</item>
+                      <item>*      NAME                          = 3</item>
+                      <item>*      NOT_FOUND                     = 4</item>
+                      <item>*      OBJECT                        = 5</item>
+                      <item>*      REFERENCE_CHECK               = 6</item>
+                      <item>*      WRONG_ACCESS_TO_ARCHIVE       = 7</item>
+                      <item>*      OTHERS                        = 8</item>
+                      <item>            .</item>
+                      <item>  IF SY-SUBRC &lt;&gt; 0.</item>
+                      <item>* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO</item>
+                      <item>*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.</item>
+                      <item>  ENDIF.</item>
+                      <item>*</item>
+                      <item>DESCRIBE TABLE TD_LINES LINES LV_LINES.</item>
+                      <item/>
+                      <item>    CALL FUNCTION &apos;TEXT_SYMBOL_REPLACE&apos;</item>
+                      <item>      EXPORTING</item>
+                      <item>       ENDLINE                = LV_LINES</item>
+                      <item>        HEADER                 =  t_header</item>
+                      <item>        INIT                   = &apos;X&apos;</item>
+                      <item>        OPTION_DIALOG          = &apos; &apos;</item>
+                      <item>        PROGRAM                = I_REPID</item>
+                      <item>*        REPLACE_PROGRAM        = &apos;X&apos;</item>
+                      <item>*        REPLACE_STANDARD       = &apos;X&apos;</item>
+                      <item>*        REPLACE_SYSTEM         = &apos;X&apos;</item>
+                      <item>*        REPLACE_TEXT           = &apos;X&apos;</item>
+                      <item>*        STARTLINE              = 1</item>
+                      <item>*      IMPORTING</item>
+                      <item>*        CHANGED                = LV_CHANGE</item>
+                      <item>*        NEWHEADER              = T_HEADER_NEW</item>
+                      <item>      TABLES</item>
+                      <item>        LINES                  = tD_lines</item>
+                      <item>              .</item>
+                      <item>*</item>
+                      <item>    CALL FUNCTION &apos;FORMAT_TEXTLINES&apos;</item>
+                      <item>      EXPORTING</item>
+                      <item>*       CURSOR_COLUMN           = 0</item>
+                      <item>*       CURSOR_LINE             = 0</item>
+                      <item>        ENDLINE                 = lv_lines</item>
+                      <item>        FORMATWIDTH             = 70</item>
+                      <item>*       LINEWIDTH               = 132</item>
+                      <item>*       STARTLINE               = 1</item>
+                      <item>*       LANGUAGE                = SY-LANGU</item>
+                      <item>*     IMPORTING</item>
+                      <item>*       NEW_CURSOR_COLUMN       =</item>
+                      <item>*       NEW_CURSOR_LINE         =</item>
+                      <item>      TABLES</item>
+                      <item>        LINES                   = td_lines</item>
+                      <item>*     EXCEPTIONS</item>
+                      <item>*       BOUND_ERROR             = 1</item>
+                      <item>*       OTHERS                  = 2</item>
+                      <item>              .</item>
+                      <item>    IF SY-SUBRC &lt;&gt; 0.</item>
+                      <item>* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO</item>
+                      <item>*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.</item>
+                      <item>    ENDIF.</item>
+                      <item>*</item>
+                      <item>   read table td_lines into wa_lines index 1.</item>
+                      <item>   if sy-subrc eq 0.</item>
+                      <item>    LV_FIRSTLINE = WA_LINES-TDLINE.</item>
+                      <item/>
+                      <item>   endif.</item>
+                      <item/>
+                      <item/>
+                      <item>   read table td_lines into wa_lines index 4.</item>
+                      <item>   if sy-subrc eq 0.</item>
+                      <item>    LV_FOURTHLINE = WA_LINES-TDLINE.</item>
+                      <item/>
+                      <item>   endif.</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item>*</item>
+                      <item/>
+                     </CODE>
+                     <T_CAPTION>
+                      <item>
+                       <LANGU>E</LANGU>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <OBJTYPE>CO</OBJTYPE>
+                       <INAME>RETRIEVE_DATA</INAME>
+                       <CAPTION>New Program LineS</CAPTION>
+                      </item>
+                     </T_CAPTION>
+                    </sf:CODE>
+                   </sf:OBJ>
+                   <sf:SUCC/>
+                  </sf:NODE>
+                 </sf:item>
+                 <sf:item>
+                  <sf:NODE>
+                   <NODETYPE>TI</NODETYPE>
+                   <sf:OBJ>
+                    <sf:TEXT>
+                     <NAME>
+                      <INAME>WELCOME_LETTER_FIRST_LINE</INAME>
+                     </NAME>
+                     <CAPTION>Welcome_Letter_First_Line</CAPTION>
+                     <NOLANGUAGE>X</NOLANGUAGE>
+                     <APPMODE>P</APPMODE>
+                     <TEXT>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;LV_FIRSTLINE&amp;&lt;/&gt;</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                     </TEXT>
+                     <STYLE_NAME>Z6_SF</STYLE_NAME>
+                     <TEXT_AREA>
+                      <ENABLED>F</ENABLED>
+                      <NCOLS>0</NCOLS>
+                      <NROWS>0</NROWS>
+                     </TEXT_AREA>
+                     <T_CAPTION>
+                      <item>
+                       <LANGU>E</LANGU>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <OBJTYPE>TI</OBJTYPE>
+                       <INAME>WELCOME_LETTER_FIRST_LINE</INAME>
+                       <CAPTION>Welcome_Letter_First_Line</CAPTION>
+                      </item>
+                     </T_CAPTION>
+                    </sf:TEXT>
+                   </sf:OBJ>
+                   <sf:SUCC/>
+                  </sf:NODE>
+                 </sf:item>
+                 <sf:item>
+                  <sf:NODE>
+                   <NODETYPE>TI</NODETYPE>
+                   <sf:OBJ>
+                    <sf:TEXT>
+                     <NAME>
+                      <INAME>WELCOME_LETTER_FOURTH_LINE</INAME>
+                     </NAME>
+                     <CAPTION>Welcome_Letter_Fourth_Line</CAPTION>
+                     <NOLANGUAGE>X</NOLANGUAGE>
+                     <APPMODE>P</APPMODE>
+                     <TEXT>
+                      <item>
+                       <TDFORMAT>*</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;LV_FOURTHLINE&amp;&lt;(&gt;,&lt;)&gt;&lt;/&gt;</TDLINE>
+                      </item>
+                     </TEXT>
+                     <STYLE_NAME>Z6_SF</STYLE_NAME>
+                     <TEXT_AREA>
+                      <ENABLED>F</ENABLED>
+                      <NCOLS>0</NCOLS>
+                      <NROWS>0</NROWS>
+                     </TEXT_AREA>
+                     <T_CAPTION>
+                      <item>
+                       <LANGU>E</LANGU>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <OBJTYPE>TI</OBJTYPE>
+                       <INAME>WELCOME_LETTER_FOURTH_LINE</INAME>
+                       <CAPTION>Welcome_Letter_Fourth_Line</CAPTION>
+                      </item>
+                     </T_CAPTION>
+                    </sf:TEXT>
+                   </sf:OBJ>
+                   <sf:SUCC/>
+                  </sf:NODE>
+                 </sf:item>
+                 <sf:item>
+                  <sf:NODE>
+                   <NODETYPE>TI</NODETYPE>
+                   <sf:OBJ>
+                    <sf:TEXT>
+                     <NAME>
+                      <INAME>WELCOME_LETTER_TEXT</INAME>
+                     </NAME>
+                     <CAPTION>Welcome_Letter_Text</CAPTION>
+                     <APPMODE>P</APPMODE>
+                     <TEXT>
+                      <item>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>It gives me immense pleasure to welcome you to the Indofil family. You</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>are now a proud member of this family. We at Indofil have a firm belief</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>that, right people are the key to success. It is this asset, which has</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>helped the organization to be energetic, flexible and malleable to the</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>changing business environment in which it exists and operates.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Our team members have made Indofil’s image synonymous with ethical</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>business practices and quality both nationally and internationally. Now</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>that you are a member of a vibrant team, I am sure your vast knowledge</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>and experience will give a further acceleration to the organizational</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>strategies.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>To overcome the challenges of the fast pace world and to achieve the</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>goals of the organization I expect your total commitment, dedication and</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>hard work.  Also I am sure the environment and work culture will foster</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>you to unleash your full potential.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Our past has been impressive, but we are not willing to rest on our</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>laurels. Our zenith is yet to be achieved and we look forward for your</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>long successful career with Indofil.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Please feel free to contact me or my team in People Strategy Department</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>and we will be happy to assist you.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>I once again, welcome you to the Indofil Family and wish you a long</TDLINE>
+                      </item>
+                      <item>
+                       <TDLINE>lasting association.</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Thanking you ,</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;INDOFIL INDUSTRIES LIMITED&lt;/&gt;</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <TDFORMAT>AL</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;WA_EMP_INF-HNAME&amp;&lt;/&gt;</TDLINE>
+                      </item>
+                      <item>
+                       <TDFORMAT>AL</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;WA_EMP_INF-NAMEOFPOSITION&amp;&lt;/&gt;</TDLINE>
+                      </item>
+                     </TEXT>
+                     <STYLE_NAME>Z6_SF</STYLE_NAME>
+                     <TEXT_AREA>
+                      <ENABLED>F</ENABLED>
+                      <NCOLS>0</NCOLS>
+                      <NROWS>0</NROWS>
+                     </TEXT_AREA>
+                     <T_CAPTION>
+                      <item>
+                       <LANGU>E</LANGU>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <OBJTYPE>TI</OBJTYPE>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <CAPTION>Welcome_Letter_Text</CAPTION>
+                      </item>
+                     </T_CAPTION>
+                     <T_TEXT>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000001</LINENR>
+                       <TDFORMAT>A1</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000002</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>It gives me immense pleasure to welcome you to the Indofil family. You</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000003</LINENR>
+                       <TDLINE>are now a proud member of this family. We at Indofil have a firm belief</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000004</LINENR>
+                       <TDLINE>that, right people are the key to success. It is this asset, which has</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000005</LINENR>
+                       <TDLINE>helped the organization to be energetic, flexible and malleable to the</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000006</LINENR>
+                       <TDLINE>changing business environment in which it exists and operates.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000007</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000008</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Our team members have made Indofil’s image synonymous with ethical</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000009</LINENR>
+                       <TDLINE>business practices and quality both nationally and internationally. Now</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000010</LINENR>
+                       <TDLINE>that you are a member of a vibrant team, I am sure your vast knowledge</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000011</LINENR>
+                       <TDLINE>and experience will give a further acceleration to the organizational</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000012</LINENR>
+                       <TDLINE>strategies.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000013</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000014</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>To overcome the challenges of the fast pace world and to achieve the</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000015</LINENR>
+                       <TDLINE>goals of the organization I expect your total commitment, dedication and</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000016</LINENR>
+                       <TDLINE>hard work.  Also I am sure the environment and work culture will foster</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000017</LINENR>
+                       <TDLINE>you to unleash your full potential.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000018</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000019</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Our past has been impressive, but we are not willing to rest on our</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000020</LINENR>
+                       <TDLINE>laurels. Our zenith is yet to be achieved and we look forward for your</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000021</LINENR>
+                       <TDLINE>long successful career with Indofil.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000022</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000023</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Please feel free to contact me or my team in People Strategy Department</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000024</LINENR>
+                       <TDLINE>and we will be happy to assist you.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000025</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000026</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>I once again, welcome you to the Indofil Family and wish you a long</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000027</LINENR>
+                       <TDLINE>lasting association.</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000028</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000029</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000030</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>Thanking you ,</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000031</LINENR>
+                       <TDFORMAT>AH</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;INDOFIL INDUSTRIES LIMITED&lt;/&gt;</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000032</LINENR>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000033</LINENR>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000034</LINENR>
+                       <TDFORMAT>AL</TDFORMAT>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000035</LINENR>
+                       <TDFORMAT>AL</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;WA_EMP_INF-HNAME&amp;&lt;/&gt;</TDLINE>
+                      </item>
+                      <item>
+                       <SPRAS>E</SPRAS>
+                       <TXTYPE>F</TXTYPE>
+                       <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                       <INAME>WELCOME_LETTER_TEXT</INAME>
+                       <LINENR>000036</LINENR>
+                       <TDFORMAT>AL</TDFORMAT>
+                       <TDLINE>&lt;C1&gt;&amp;WA_EMP_INF-NAMEOFPOSITION&amp;&lt;/&gt;</TDLINE>
+                      </item>
+                     </T_TEXT>
+                    </sf:TEXT>
+                   </sf:OBJ>
+                   <sf:SUCC/>
+                  </sf:NODE>
+                 </sf:item>
+                </sf:SUCC>
+               </sf:NODE>
+              </sf:PROC_CTRL>
+             </sf:WINDOW>
+            </sf:OBJ>
+            <sf:OUTATTR>
+             <sf:OUTATTR>
+              <NAME>
+               <INAME>%OUTATTRIB1</INAME>
+              </NAME>
+              <CAPTION>New Display Option</CAPTION>
+              <U_WFRAME>PT</U_WFRAME>
+              <U_WBOXV>CM</U_WBOXV>
+              <U_WBOXH>CM</U_WBOXH>
+              <WLEFT>1.70</WLEFT>
+              <U_WLEFT>CM</U_WLEFT>
+              <WWIDTH>16.00</WWIDTH>
+              <U_WWIDTH>CM</U_WWIDTH>
+              <WTOP>6.20</WTOP>
+              <U_WTOP>CM</U_WTOP>
+              <WHEIGHT>22.20</WHEIGHT>
+              <U_WHEIGHT>CM</U_WHEIGHT>
+              <BORDER>
+               <LEFTATTR>
+                <THICKNESS>0.00</THICKNESS>
+                <THICKNESSU>PT</THICKNESSU>
+                <DISTANCE>0.00</DISTANCE>
+                <DISTANCEU>CM</DISTANCEU>
+                <COLOR>
+                 <RED>000</RED>
+                 <GREEN>000</GREEN>
+                 <BLUE>000</BLUE>
+                 <TRANS>000</TRANS>
+                </COLOR>
+               </LEFTATTR>
+               <TOPATTR>
+                <THICKNESS>0.00</THICKNESS>
+                <THICKNESSU>PT</THICKNESSU>
+                <DISTANCE>0.00</DISTANCE>
+                <DISTANCEU>CM</DISTANCEU>
+                <COLOR>
+                 <RED>000</RED>
+                 <GREEN>000</GREEN>
+                 <BLUE>000</BLUE>
+                 <TRANS>000</TRANS>
+                </COLOR>
+               </TOPATTR>
+               <RIGHTATTR>
+                <THICKNESS>0.00</THICKNESS>
+                <THICKNESSU>PT</THICKNESSU>
+                <DISTANCE>0.00</DISTANCE>
+                <DISTANCEU>CM</DISTANCEU>
+                <COLOR>
+                 <RED>000</RED>
+                 <GREEN>000</GREEN>
+                 <BLUE>000</BLUE>
+                 <TRANS>000</TRANS>
+                </COLOR>
+               </RIGHTATTR>
+               <BOTTOMATTR>
+                <THICKNESS>0.00</THICKNESS>
+                <THICKNESSU>PT</THICKNESSU>
+                <DISTANCE>0.00</DISTANCE>
+                <DISTANCEU>CM</DISTANCEU>
+                <COLOR>
+                 <RED>000</RED>
+                 <GREEN>000</GREEN>
+                 <BLUE>000</BLUE>
+                 <TRANS>000</TRANS>
+                </COLOR>
+               </BOTTOMATTR>
+              </BORDER>
+              <T_CAPTION>
+               <item>
+                <LANGU>E</LANGU>
+                <FORMNAME>Z6HR019S_WELCOME_LETTER_EXP</FORMNAME>
+                <OBJTYPE>OA</OBJTYPE>
+                <INAME>%OUTATTRIB1</INAME>
+                <CAPTION>New Display Option</CAPTION>
+               </item>
+              </T_CAPTION>
+             </sf:OUTATTR>
+            </sf:OUTATTR>
+            <sf:SUCC/>
+           </sf:NODE>
+          </sf:item>
+         </sf:SUCC>
+        </sf:NODE>
+       </sf:item>
+      </sf:SUCC>
+     </sf:NODE>
+    </sf:PAGETREE>
+   </sf:item>
+  </sf:VARHEADER>
+ </sf:SMARTFORM>
+</abapGit>

@@ -1,0 +1,461 @@
+*&---------------------------------------------------------------------*
+*& Report  Z6HR013_IT015_UPL
+* OBJECT DESCRIPTION:
+* OBJECT TYPE       : BDC                FUNC. CONSULTANT  : sanjay
+*         TEAM LEAD : RAMAKRISHNA
+*         Developer :venugopal
+*      CREATION DATE: 26-07-2010
+*        DEV REQUEST: IRDK900614
+*             TCODE : YHR013
+*----------------------------------------------------------------------*
+
+
+REPORT  Z6HR013_IT015_UPL.
+
+*----------------------------------------------------------------------*
+*     TABLES
+*----------------------------------------------------------------------*
+* TABLES DECLARATION
+TABLES : RP50G     ,  " INPUT FIELDS FOR HR MASTER DATA TRANSACTIONS
+         Q0015     ,  " SCREEN FIELDS INFO TYPE 0015(ADDITIONALPAYMENTS)
+         P0015     ," HR MASTER RECORD INFO TYPE 0015
+         SSCRFIELDS,  " FIELDS ON SELECTION SCREEN
+         T100      .  " INFORMATION OF MESSAGES
+* DECLARE USER DEFINED DATA TYPES
+TYPES : BEGIN OF TY_TABLES,
+        PERNR LIKE RP50G-PERNR, "PERSONAL NUMBER
+        TIMR6 LIKE RP50G-TIMR6, "TIME PERIOD INDICATOR-PERIOD
+        BEGDA LIKE RP50G-BEGDA, "FROM DATE
+        ENDDA LIKE RP50G-ENDDA, "TO DATE
+        CHOIC LIKE RP50G-CHOIC, "INFOTYPE SELECTION FOR HR MASTER
+        SUBTY LIKE RP50G-SUBTY, "SUBTYPE
+        BETRG LIKE Q0015-BETRG, "WAGE TYPE AMOUNT FOR PAYMENTS
+        WAERS LIKE P0015-WAERS, "CURRENCY KEY
+        BEGDA1 LIKE P0015-BEGDA,"START DATE
+        ZUORD LIKE P0015-ZUORD, "ASSIGNMENT NUMBER
+        END OF TY_TABLES.
+ "INTERNAL TABLE CREATION
+
+ DATA: WA_TABLES TYPE TY_TABLES,
+
+       ITAB TYPE TABLE OF TY_TABLES.
+
+ "DECLARATION OF BDCDATA STRUCTURE
+ DATA : WA_BDCDATA TYPE BDCDATA,
+       IT_BDCDATA TYPE TABLE OF BDCDATA.
+ "DECLARATION OF internal table for Error records
+ DATA : IT_BDCMSGCOLL type table of BDCMSGCOLL.
+
+ DATA : BEGIN OF err_data OCCURS 0 ,
+           PERNR  LIKE RP50G-PERNR ,
+           SUBTY  LIKE RP50G-SUBTY ,
+           BETRG  LIKE Q0015-BETRG ,
+           ZUORD  LIKE P0015-ZUORD ,
+           err(50) ,
+         END   OF err_data .
+
+ DATA : mode TYPE C.
+
+ DATA : FILENAME1 TYPE STRING.
+
+ DATA : G_ANSWER TYPE C,
+         G_LINES_TAB TYPE POPUPTEXT OCCURS 0
+                               WITH HEADER LINE.
+ DATA : IDWN TYPE ZZTT_FILEFORMAT.
+ DATA : ST_DWN TYPE ZZLT_FILEFORMAT.
+ DATA : WA_DWN TYPE ZZLT_FILEFORMAT.
+
+
+  SELECTION-SCREEN BEGIN OF BLOCK S1 WITH FRAME TITLE TEXT-001.
+
+PARAMETERS: P_FOREGR RADIOBUTTON GROUP RAD1 DEFAULT 'X' ,
+            P_BACKGR   RADIOBUTTON GROUP RAD1 .
+
+SELECTION-SCREEN END   OF BLOCK S1 .
+
+SELECTION-SCREEN BEGIN OF BLOCK S2 WITH FRAME TITLE TEXT-002 .
+PARAMETERS: P_FILE  TYPE RLGRAP-FILENAME.
+SELECTION-SCREEN END OF BLOCK S2 .
+
+SELECTION-SCREEN BEGIN OF BLOCK S3 WITH FRAME TITLE TEXT-009.
+SELECTION-SCREEN PUSHBUTTON /1(7) HELP USER-COMMAND INFO.
+SELECTION-SCREEN PUSHBUTTON 15(17) DOWN USER-COMMAND DOWN.
+
+SELECTION-SCREEN END OF BLOCK S3.
+
+INCLUDE Z6XX003I_BDC_NOTE.
+
+INITIALIZATION.
+*----------------------------------------------------------------------*
+*  MOVE 'Document Upload Mode' TO  sscrfields-functxt_01.
+MOVE '@0S@' TO HELP.
+ MOVE '@49@ Download'(003) TO DOWN.
+
+ PERFORM F_FILL_INFOTEXT.
+
+
+ IF P_FOREGR EQ 'X' .
+    mode = 'A' .
+  ELSE .
+   mode = 'N' .
+  ENDIF .
+
+
+AT SELECTION-SCREEN.
+  IF SSCRFIELDS-UCOMM = 'INFO'.
+    CALL FUNCTION 'DD_POPUP_WITH_INFOTEXT'
+      EXPORTING
+        TITEL        = 'TEXT FILE FORMAT '(020)
+        START_COLUMN = 10
+        START_ROW    = 10
+        END_COLUMN   = 85
+        END_ROW      = 27
+        INFOFLAG     = ' '
+      IMPORTING
+        ANSWER       = G_ANSWER
+      TABLES
+        LINES        = G_LINES_TAB.
+  ELSEIF SSCRFIELDS-UCOMM = 'DOWN'.
+    PERFORM F_FILL_IDWN.
+    CALL FUNCTION 'DOWNLOAD'
+      EXPORTING
+        FILENAME = 'C:\FIDOCUMENTFILE FORMAT.TXT'
+        FILETYPE = 'DAT'
+      TABLES
+        DATA_TAB = IDWN.
+
+  ENDIF.
+
+
+
+*
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR P_FILE.
+
+
+CALL FUNCTION 'F4_FILENAME'
+ EXPORTING
+   PROGRAM_NAME        = SYST-CPROG
+   DYNPRO_NUMBER       = SYST-DYNNR
+   FIELD_NAME          = 'P_FILE'
+ IMPORTING
+   FILE_NAME           = P_FILE.
+
+
+  IF NOT P_FILE IS INITIAL.
+
+    FILENAME1 = P_FILE.
+
+  ENDIF.
+
+
+ "CALLING FUNCTION MODULE
+  CALL FUNCTION 'GUI_UPLOAD'
+    EXPORTING
+      FILENAME                      = FILENAME1
+     FILETYPE                      = 'DAT'
+*     HAS_FIELD_SEPARATOR           = ' '
+*     HEADER_LENGTH                 = 0
+*     READ_BY_LINE                  = 'X'
+*     DAT_MODE                      = ' '
+*     CODEPAGE                      = ' '
+*     IGNORE_CERR                   = ABAP_TRUE
+*     REPLACEMENT                   = '#'
+*     CHECK_BOM                     = ' '
+*     VIRUS_SCAN_PROFILE            =
+*     NO_AUTH_CHECK                 = ' '
+*   IMPORTING
+*     FILELENGTH                    =
+*     HEADER                        =
+    TABLES
+      DATA_TAB                      = ITAB.
+*   EXCEPTIONS
+*     FILE_OPEN_ERROR               = 1
+*     FILE_READ_ERROR               = 2
+*     NO_BATCH                      = 3
+*     GUI_REFUSE_FILETRANSFER       = 4
+*     INVALID_TYPE                  = 5
+*     NO_AUTHORITY                  = 6
+*     UNKNOWN_ERROR                 = 7
+*     BAD_DATA_FORMAT               = 8
+*     HEADER_NOT_ALLOWED            = 9
+*     SEPARATOR_NOT_ALLOWED         = 10
+*     HEADER_TOO_LONG               = 11
+*     UNKNOWN_DP_ERROR              = 12
+*     ACCESS_DENIED                 = 13
+*     DP_OUT_OF_MEMORY              = 14
+*     DISK_FULL                     = 15
+*     DP_TIMEOUT                    = 16
+*     OTHERS                        = 17
+            .
+  IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  LOOP AT ITAB INTO WA_TABLES.
+
+   REFRESH IT_BDCDATA.
+    PERFORM SCREEN_DETAILS USING 'SAPMP50A' '1000' 'X'.
+
+    PERFORM FIELD_DETAILS USING 'BDC_CURSOR' WA_TABLES-PERNR.
+    PERFORM FIELD_DETAILS USING 'BDC_OKCODE' '/00'.
+    PERFORM FIELD_DETAILS USING 'RP50G-PERNR' WA_TABLES-PERNR.
+    PERFORM FIELD_DETAILS USING 'RP50G-TIMR6' WA_TABLES-TIMR6.
+    PERFORM FIELD_DETAILS USING 'RP50G-BEGDA' WA_TABLES-BEGDA.
+    PERFORM FIELD_DETAILS USING 'RP50G-ENDDA' WA_TABLES-ENDDA.
+    PERFORM FIELD_DETAILS USING 'BDC_CURSOR' WA_TABLES-SUBTY.
+    PERFORM FIELD_DETAILS USING 'RP50G-CHOIC' WA_TABLES-CHOIC.
+    PERFORM FIELD_DETAILS USING 'RP50G-SUBTY' WA_TABLES-SUBTY.
+
+
+
+    PERFORM SCREEN_DETAILS USING 'SAPMP50A' '1000' 'X'.
+
+    PERFORM FIELD_DETAILS USING 'BDC_CURSOR' WA_TABLES-PERNR.
+    PERFORM FIELD_DETAILS USING 'BDC_OKCODE' '=INS'.
+    PERFORM FIELD_DETAILS USING 'RP50G-PERNR' WA_TABLES-PERNR.
+    PERFORM FIELD_DETAILS USING 'RP50G-TIMR6' WA_TABLES-TIMR6.
+    PERFORM FIELD_DETAILS USING 'RP50G-BEGDA' WA_TABLES-BEGDA.
+    PERFORM FIELD_DETAILS USING 'RP50G-ENDDA' WA_TABLES-ENDDA.
+    PERFORM FIELD_DETAILS USING 'RP50G-CHOIC' WA_TABLES-CHOIC.
+    PERFORM FIELD_DETAILS USING 'RP50G-SUBTY' WA_TABLES-SUBTY.
+
+
+    PERFORM SCREEN_DETAILS USING 'MP001500' '2040' 'X'.
+
+    PERFORM FIELD_DETAILS USING 'BDC_CURSOR' WA_TABLES-ZUORD.
+    PERFORM FIELD_DETAILS USING 'BDC_OKCODE' '=UPD'.
+    PERFORM FIELD_DETAILS USING 'Q0015-BETRG' WA_TABLES-BETRG.
+    PERFORM FIELD_DETAILS USING 'P0015-WAERS' WA_TABLES-WAERS.
+    PERFORM FIELD_DETAILS USING 'P0015-BEGDA' WA_TABLES-BEGDA1.
+    PERFORM FIELD_DETAILS USING 'P0015-ZUORD' WA_TABLES-ZUORD.
+
+   CALL TRANSACTION 'PA30' USING IT_BDCDATA MODE 'mode' messages into
+IT_bdcmsgcoll .
+
+   ENDLOOP.
+
+    perform  disp_err.
+
+    FORM SCREEN_DETAILS USING PROGRAM SCREEN BEGIN.
+    CLEAR WA_BDCDATA.
+    WA_BDCDATA-PROGRAM = PROGRAM.
+    WA_BDCDATA-DYNPRO = SCREEN.
+    WA_BDCDATA-DYNBEGIN = BEGIN.
+
+    APPEND WA_BDCDATA TO IT_BDCDATA.
+    ENDFORM.
+
+   FORM FIELD_DETAILS USING FIELD VALUE.
+   CLEAR WA_BDCDATA.
+   WA_BDCDATA-FNAM = FIELD.
+   WA_BDCDATA-FVAL = VALUE.
+
+   APPEND WA_BDCDATA TO IT_BDCDATA.
+   ENDFORM.
+
+* displaying errors
+
+*&---------------------------------------------------------------------*
+*&      FORM  F_FILL_INFOTEXT
+*&---------------------------------------------------------------------*
+*       TEXT
+*----------------------------------------------------------------------*
+*  -->  P1        TEXT
+*  <--  P2        TEXT
+*----------------------------------------------------------------------*
+
+FORM F_FILL_INFOTEXT .
+
+  MOVE: 'X' TO G_LINES_TAB-HELL,
+        'X' TO G_LINES_TAB-TOPOFPAGE,
+        'FORMAT FOR UPLOAD DATA'(005)  TO G_LINES_TAB-TEXT.
+  APPEND G_LINES_TAB.
+
+  MOVE:  'X' TO G_LINES_TAB-HELL,
+          ' ' TO G_LINES_TAB-TOPOFPAGE,
+          'FIELD        TYPE      WIDTH  DEC  REMARKS'(006)
+          TO G_LINES_TAB-TEXT.
+  APPEND G_LINES_TAB.
+  MOVE ' ' TO G_LINES_TAB-TEXT.
+  APPEND G_LINES_TAB.
+
+
+ PERFORM APPEND_FIELDS USING :
+'PERNR' 'NUMC' '8' '' 'PERSONNNEL NUMBER',
+'TIMR6' 'CHAR' '1' '' 'TIME PERIOD INDICATOR:PERIOD',
+'BEGDA' 'CHAR' '10' '' 'FROM',
+'ENDDA' 'CHAR' '10' '' 'VALID TO DATE',
+'CHOIC' 'CHAR' '35' '' 'INFOTYPE SELECTION FOR HR MASTER',
+'SUBTY' 'CHAR' '4' '' 'SUB TYPE',
+'BETRG' 'CURR' '13' '' 'WAGE TYPE AMOUNT FOR PAYMENTS',
+'WAERS' 'CUKY' '5' '' 'CURRENCY KEY',
+'ZUORD' 'CHAR' '20' ' ' 'ASSIGNMENT NUMBER'.
+ENDFORM.         "FORM F_FILL_INFOTEXT
+
+
+*&---------------------------------------------------------------------*
+*&      FORM  APPEND_FIELDS
+*&---------------------------------------------------------------------*
+FORM APPEND_FIELDS USING FIELD TYP WIDTH DECM REM.
+
+  DATA : TEXT(140).
+  TEXT = FIELD.
+  TEXT+13(10)  = TYP.
+  TEXT+24(6)  = WIDTH.
+  TEXT+30(5)  = DECM.
+  TEXT+35(80)  = REM.
+
+  MOVE:  ' ' TO G_LINES_TAB-HELL,
+         ' ' TO G_LINES_TAB-TOPOFPAGE,
+         TEXT  TO G_LINES_TAB-TEXT.
+  APPEND G_LINES_TAB.
+
+
+
+ENDFORM.                    " APPEND_FIELDS
+                  " F_FILL_INFOTEXT
+
+*&---------------------------------------------------------------------*
+*&      FORM  F_FILL_IDWN
+*&---------------------------------------------------------------------*
+*       TEXT
+*----------------------------------------------------------------------*
+*  -->  P1        TEXT
+*  <--  P2        TEXT
+*----------------------------------------------------------------------*
+FORM F_FILL_IDWN .
+  TYPE-POOLS : ABAP.
+  DATA : IT_DETAILS TYPE ABAP_COMPDESCR_TAB,
+          WA_COMP TYPE ABAP_COMPDESCR.
+  FIELD-SYMBOLS : <G1>,<F1>.
+  DATA : V_TEXT TYPE STRING.
+  DATA : V_FNAME TYPE DDOBJNAME.
+  DATA : REF_DESCR TYPE REF TO CL_ABAP_STRUCTDESCR.
+
+  REF_DESCR ?= CL_ABAP_TYPEDESCR=>DESCRIBE_BY_DATA( WA_TABLES ).
+  IT_DETAILS[] = REF_DESCR->COMPONENTS[].
+
+
+
+  LOOP AT IT_DETAILS INTO WA_COMP.
+    DO.
+      ASSIGN COMPONENT SY-INDEX OF STRUCTURE WA_COMP TO <G1>.
+      IF SY-SUBRC NE 0.
+        EXIT.
+      ELSE.
+        CASE SY-INDEX.
+          WHEN 4.
+            ASSIGN COMPONENT SY-TABIX OF STRUCTURE ST_DWN TO <F1>.
+            IF SY-SUBRC NE 0.
+              EXIT.
+            ENDIF.
+            <F1> = <G1>.
+
+        ENDCASE.
+
+      ENDIF.
+    ENDDO.
+
+  ENDLOOP.
+  APPEND ST_DWN TO IDWN.
+  CLEAR  ST_DWN.
+  UNASSIGN : <G1>,<F1>.
+  LOOP AT IDWN INTO ST_DWN.
+    DO.
+      ASSIGN COMPONENT SY-INDEX OF STRUCTURE ST_DWN TO <G1>.
+      IF SY-SUBRC NE 0.
+        EXIT.
+      ELSE.
+        ASSIGN COMPONENT SY-INDEX OF STRUCTURE WA_DWN TO <F1>.
+        IF SY-SUBRC NE 0.
+          EXIT.
+        ENDIF.
+        V_FNAME = <G1>.
+        SELECT SINGLE SCRTEXT_M FROM DD04T INTO V_TEXT
+                   WHERE ROLLNAME = V_FNAME
+                     AND DDLANGUAGE = SY-LANGU.
+        IF V_TEXT IS INITIAL.
+          V_TEXT = <G1>.
+        ENDIF.
+        <F1> = V_TEXT.
+
+      ENDIF.
+    ENDDO.
+  ENDLOOP.
+  APPEND WA_DWN TO IDWN.
+  CLEAR  WA_DWN.
+  UNASSIGN : <G1>,<F1>.
+*  CLEAR IDWN.
+*  REFRESH IDWN.
+*
+*  IDWN-TEXT1(25) =  'MAINTENANCE PLAN CATEGORY'.
+*  IDWN-TEXT2(25) =  'STRATEGY'.
+*  IDWN-TEXT3(25) =  'PLAN TEXT'.
+*  IDWN-TEXT4(25) =  'EQUIPMENT'.
+*  IDWN-TEXT5(25) =  'ORDER TYPE'.
+*  IDWN-TEXT6(25) =  'WORK CENTER'.
+*  IDWN-TEXT7(25) =  'TASK LIST TYPE'.
+*  IDWN-TEXT8(25) =  'TASK LIST GROUP'.
+*  IDWN-TEXT9(25) =  'GROUP COUNTER'.
+*  IDWN-TEXT10(25) =  'SF LATER CONFIRMATION'.
+*  IDWN-TEXT11(25) =  'TOLERANCE (+)'.
+*  IDWN-TEXT12(25) =  'SF EARLIER CONFIRMATION'.
+*  IDWN-TEXT13(25) =  'TOLERANCE (-)'.
+*  IDWN-TEXT14(25) =  'CYCLE MODIFICATION FACT'.
+*  IDWN-TEXT15(25) =  'FACTORY CALENDAR'.
+*  IDWN-TEXT16(25) =  'CALL HORIZON'.
+*  IDWN-TEXT17(25) =  'SCHEDULING PERIOD'.
+*  IDWN-TEXT18(25) =  'START OF CYCLE'.
+*  APPEND IDWN.
+*  CLEAR IDWN.
+*  IDWN-TEXT1(15) =  'MPTYP'.
+*  IDWN-TEXT2(15) =  'STRAT'.
+*  IDWN-TEXT3(15) =  'PLNTX'.
+*  IDWN-TEXT4(15) =  'EQUNR'.
+*  IDWN-TEXT5(15) =  'AUART'.
+*  IDWN-TEXT6(15) =  'WCENT'.
+*  IDWN-TEXT7(15) =  'PLNTY'.
+*  IDWN-TEXT8(15) =  'PLNNR'.
+*  IDWN-TEXT9(15) =  'PLNAL'.
+*  IDWN-TEXT10(15) =  'VSPOS'.
+*  IDWN-TEXT11(15) =  'TOPOS'.
+*  IDWN-TEXT12(15) =  'VSNEG'.
+*  IDWN-TEXT13(15) =  'TONEG'.
+*  IDWN-TEXT14(15) =  'SFAKT'.
+*  IDWN-TEXT15(15) =  'FABKL'.
+*  IDWN-TEXT16(15) =  'HORIZ'.
+*  IDWN-TEXT17(15) =  'ABRHO'.
+*  IDWN-TEXT18(15) =  'STADT'.
+*  APPEND IDWN.
+*  CLEAR IDWN.
+ENDFORM.                    " F_FILL_IDWN
+FORM disp_err.
+  LOOP AT err_data .
+    AT FIRST .
+      WRITE : / sy-uline(85) .
+      WRITE : / '|' NO-GAP , (6)  'Personnel no.'    NO-GAP COLOR
+COL_HEADING ,
+                '|' NO-GAP , (10)  'Subtype.'  NO-GAP COLOR
+COL_HEADING ,
+                '|' NO-GAP , (15) 'wagetype amount.' NO-GAP COLOR
+COL_HEADING ,
+                '|' NO-GAP , (20)  'Assign number.'  NO-GAP COLOR
+COL_HEADING ,
+                '|' NO-GAP , (50) 'ERROR'   NO-GAP COLOR COL_NEGATIVE ,
+                '|' NO-GAP .
+      WRITE : / sy-uline(85) .
+    ENDAT .
+
+    WRITE : / '|' NO-GAP , (6) err_data-PERNR NO-GAP COLOR COL_NORMAL ,
+              '|' NO-GAP , err_data-subty NO-GAP COLOR COL_NORMAL ,
+              '|' NO-GAP , err_data-betrg NO-GAP COLOR COL_NORMAL ,
+              '|' NO-GAP , err_data-zuord NO-GAP COLOR COL_NORMAL ,
+              '|' NO-GAP , err_data-err   NO-GAP COLOR COL_NORMAL ,
+              '|' NO-GAP .
+
+    AT LAST .
+      WRITE : / sy-uline(85) .
+    ENDAT .
+  ENDLOOP .
+ENDFORM.

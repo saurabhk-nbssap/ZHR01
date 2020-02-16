@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>ESS Leave Request Validations</SHORTTEXT>
+   <SPOT_NAME>PT_ABS_REQ</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>PT_ABS_REQ</SPOT_NAME>
+     <BADI_NAME>PT_ABS_REQ</BADI_NAME>
+     <IMPL_NAME>Z6HR006B_LEAVE_REQ_VAL</IMPL_NAME>
+     <IMPL_CLASS>Z6HR006C_LEAVE_REQ_VALN</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Implementation: Erweiterungen für die Abwesenheitsmitteilung</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>4C8DFB59BEDF3A28E1000000C0A80A1D</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

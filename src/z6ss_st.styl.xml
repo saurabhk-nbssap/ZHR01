@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_STYL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <STYLE>
+    <HEADER>
+     <TDSTYLE>Z6SS_ST</TDSTYLE>
+     <TDSPRAS>E</TDSPRAS>
+     <TDOSPRAS>E</TDOSPRAS>
+     <TDTEXT>Sap Script Style</TDTEXT>
+     <TDFIRSTPAR>C1</TDFIRSTPAR>
+    </HEADER>
+    <PARAGRAPHS>
+     <ITCDP>
+      <TDPARGRAPH>C1</TDPARGRAPH>
+      <TDTEXT>Helve 10 Pt</TDTEXT>
+      <TDPJUSTIFY>LEFT</TDPJUSTIFY>
+      <TDPLDIST>1.0</TDPLDIST>
+      <TDPLDISTU>LN</TDPLDISTU>
+      <TDPTOPU>CM</TDPTOPU>
+      <TDPBOTU>CM</TDPBOTU>
+      <TDPLEFTU>CM</TDPLEFTU>
+      <TDPRIGHTU>CM</TDPRIGHTU>
+      <TDPENTRYU>CM</TDPENTRYU>
+      <TDNUMLEFTU>CM</TDNUMLEFTU>
+      <TDNUMBERIN>CHAR</TDNUMBERIN>
+      <TDFAMILY>HELVE</TDFAMILY>
+      <TDHEIGHT>100</TDHEIGHT>
+      <TDBOLD>*</TDBOLD>
+      <TDITALIC>*</TDITALIC>
+      <TDCAPS>*</TDCAPS>
+      <TDUNDERLIN>*</TDUNDERLIN>
+      <TDDEFFAM>HELVE</TDDEFFAM>
+      <TDDEFHGHT>100</TDDEFHGHT>
+     </ITCDP>
+    </PARAGRAPHS>
+    <STRINGS>
+     <ITCDS>
+      <TDSTRING>C1</TDSTRING>
+      <TDTEXT>Bold  Text</TDTEXT>
+      <TDMARK>*</TDMARK>
+      <TDSUPER>*</TDSUPER>
+      <TDSUB>*</TDSUB>
+      <TDHIDDEN>*</TDHIDDEN>
+      <TDPROTLINE>*</TDPROTLINE>
+      <TDBOLD>X</TDBOLD>
+      <TDITALIC>*</TDITALIC>
+      <TDCAPS>*</TDCAPS>
+      <TDUNDERLIN>*</TDUNDERLIN>
+     </ITCDS>
+    </STRINGS>
+   </STYLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

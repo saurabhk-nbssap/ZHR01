@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>Validations in Case of LTA Claims</SHORTTEXT>
+   <SPOT_NAME>HRPBSINNEWCLAIMS</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>HRPBSINNEWCLAIMS</SPOT_NAME>
+     <BADI_NAME>HRPBSIN_VALIDATE_REQUEST</BADI_NAME>
+     <IMPL_NAME>Z6HR021B_VALIDATIONS_CLAIMS</IMPL_NAME>
+     <IMPL_CLASS>Z6HR021C_VALIDATIONS_CLAIMS</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Implementation: BADi for Request Validation Data</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>4C72B5716E6A3A27E1000000C0A80A1D</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

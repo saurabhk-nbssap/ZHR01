@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>Leave Request - Half Day Leave- Corrections - Messages</SHORTTEXT>
+   <SPOT_NAME>PT_GEN_REQ</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>PT_GEN_REQ</SPOT_NAME>
+     <BADI_NAME>PT_GEN_REQ</BADI_NAME>
+     <IMPL_NAME>Z6HR006B_LEAVE_REQ_SCREEN</IMPL_NAME>
+     <IMPL_CLASS>Z6HR006C_LEAVE_REQ_SCREEN</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Implementation: BAdI: Verarbeitungsprozesse für Web-Anwendungen steuern</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>4C52AA603D663A2CE1000000C0A80A1D</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

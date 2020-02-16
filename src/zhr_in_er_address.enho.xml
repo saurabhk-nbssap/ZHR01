@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>Badi for CIT TDS address</SHORTTEXT>
+   <SPOT_NAME>HR_IN_ER_ADDRESS</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>HR_IN_ER_ADDRESS</SPOT_NAME>
+     <BADI_NAME>HR_IN_ER_ADDRESS</BADI_NAME>
+     <IMPL_NAME>ZHR_IN_ER_ADDRESS</IMPL_NAME>
+     <IMPL_CLASS>ZGET_CIT_ADDRESS</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>Implementation: HR IN: Employer Address Selection</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>4E2F69C7894E0687E1000000C0A80A1D</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SXCI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SXCI>
+    <IMPLEMENTATION_DATA>
+     <IMP_NAME>Z6HR029B_PEN_MARCHDT</IMP_NAME>
+     <TEXT>Badi For Uploading March Data - Pension Report</TEXT>
+     <IMP_CLASS>ZCL_IM_6HR029B_PEN_MARCHDT</IMP_CLASS>
+     <EXIT_NAME>HR_IN_PF_REP_MARCH</EXIT_NAME>
+     <INTER_NAME>IF_EX_HR_IN_PF_REP_MARCH</INTER_NAME>
+    </IMPLEMENTATION_DATA>
+    <FILTERS>
+     <item>
+      <FLT_VAL>40</FLT_VAL>
+     </item>
+    </FILTERS>
+   </SXCI>
+  </asx:values>
+ </asx:abap>
+</abapGit>

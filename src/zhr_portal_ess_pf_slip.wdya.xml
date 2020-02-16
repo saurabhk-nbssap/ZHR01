@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_WDYA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <APP>
+    <APPLICATION_NAME>ZHR_PORTAL_ESS_PF_SLIP</APPLICATION_NAME>
+    <COMPONENT>ZHR_PORTAL_ESS_PF_SLIP</COMPONENT>
+    <STARTUP_VIEW>ZHR_PORTAL_ESS_PF_SL</STARTUP_VIEW>
+    <STARTUP_PLUG>DEFAULT</STARTUP_PLUG>
+    <DISPLAY_NAME>zhr_portal_ess_pf_slip</DISPLAY_NAME>
+   </APP>
+   <PROPERTIES>
+    <WDY_APP_PROPERTY>
+     <APPLICATION_NAME>ZHR_PORTAL_ESS_PF_SLIP</APPLICATION_NAME>
+     <NAME>IV_USER</NAME>
+    </WDY_APP_PROPERTY>
+   </PROPERTIES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

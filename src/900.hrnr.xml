@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="ZCL_ABAPGIT_OBJECT_BY_SOBJ" serializer_version="1.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T78NR>
+    <T78NR>
+     <LEAD_NR>900</LEAD_NR>
+     <MANDT>100</MANDT>
+    </T78NR>
+   </T78NR>
+   <T78NR_field_catalog>
+    <item>
+     <POS>1</POS>
+     <NAME>LEAD_NR</NAME>
+     <TYPE_KIND>N</TYPE_KIND>
+     <LENGTH>3</LENGTH>
+     <IS_KEY>X</IS_KEY>
+    </item>
+    <item>
+     <POS>2</POS>
+     <NAME>SYSID</NAME>
+     <TYPE_KIND>C</TYPE_KIND>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <POS>3</POS>
+     <NAME>MANDT</NAME>
+     <TYPE_KIND>C</TYPE_KIND>
+     <LENGTH>3</LENGTH>
+    </item>
+   </T78NR_field_catalog>
+  </asx:values>
+ </asx:abap>
+</abapGit>

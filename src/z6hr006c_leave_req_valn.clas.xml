@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Default Implementation for BAdI Definition PT_ABS_REQ</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>T01</KEY>
+     <ENTRY>All Co-workers</ENTRY>
+     <LENGTH>25</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>ACTOR_AGENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Agent Request Participants</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>AUTH_CHECKER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>BAdI Interface IF_EX_HRPAD00AUTH_CHECK</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>MESSAGE_HANDLER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Processing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>PT_REQ_APPLICATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Agent Request Header</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>SAVED_QUOTAS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Absence Quotas Remainder</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>Z6HR006C_LEAVE_REQ_VALN</CLSNAME>
+     <CMPNAME>SAVED_TIME_ACCOUNTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Entitlements in Time Accounts</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

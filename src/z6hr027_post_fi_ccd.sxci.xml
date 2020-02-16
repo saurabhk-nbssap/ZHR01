@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SXCI" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SXCI>
+    <IMPLEMENTATION_DATA>
+     <IMP_NAME>Z6HR027_POST_FI_CCD</IMP_NAME>
+     <TEXT>Travel - FI Integration - Credit Card</TEXT>
+     <IMP_CLASS>ZCL_IM_6HR027_POST_FI_CCD</IMP_CLASS>
+     <EXIT_NAME>TRIP_POST_FI</EXIT_NAME>
+     <INTER_NAME>IF_EX_TRIP_POST_FI</INTER_NAME>
+    </IMPLEMENTATION_DATA>
+    <FILTERS>
+     <item>
+      <FLT_VAL>1000</FLT_VAL>
+     </item>
+    </FILTERS>
+   </SXCI>
+  </asx:values>
+ </asx:abap>
+</abapGit>
