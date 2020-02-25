@@ -1507,7 +1507,7 @@ end_method.
 begin_method wait_for_event_change changing container.
 
 * Wait for 5 min
-WAIT UP TO 30 SECONDS.
+WAIT UP TO 300 SECONDS.
 
 end_method.
 
