@@ -823,13 +823,13 @@ BREAK 10106.
       translate gv_modi to lower case.
 
       if wa_upload-bukrs <> '801'.  " for other company than indoreagens.com
-      if gv_modi np '*-icc@modi.com' .
+      if gv_modi np '*@indofil.com' .
 *        if gv_modi np '*@indoreagens.com'."
         " End change - IRDK930682
         delete i_upload_fin[] where pernr = wa_upload-pernr.
         if gv_pernr1 ne wa_upload-pernr.
           format color 6 intensified off.
-          write : / 'ERROR:', 'Employee', wa_upload-pernr, 'E-mail id is not modi.com'.
+          write : / 'ERROR:', 'Employee', wa_upload-pernr, 'E-mail id is not indofil.com'.
         endif.
 *        ELSE.
 *

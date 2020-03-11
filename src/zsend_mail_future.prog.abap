@@ -150,7 +150,7 @@ loop at p_rec.
       data: v_sender type ad_smtpadr.
       data l_visname type ad_namelas.
 
-      v_sender = 'sapautomail-icc@modi.com'.
+      v_sender = 'sapautomail@indofil.com'.
 
       l_sender = cl_cam_address_bcs=>create_internet_address( v_sender ).
 
