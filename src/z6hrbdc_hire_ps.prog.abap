@@ -505,7 +505,7 @@ start-of-selection.
 *                 because we run saperation action for future date we cant deactivate any user if immidiatly
 *                 we will schedule program Z_ON_SEPERATION_DUE_DEACTIVE daily which will check due date of 'I7' action and then deactivate in ATR table
 *                 date : 9.7.2019 PS
-*                  perform update_indonet_master.
+                  perform update_indonet_master.
 
 
                   " IRDK930518 ----> HR: S_K: ZHR_PS: Delimit user logon/roles on user separation
@@ -6579,7 +6579,7 @@ form other .
       from pa0105
       into zemail
       where pernr =  wa_upload-pernr
-      and endda = '99991231'
+      and endda >= sy-datum " '99991231'
       and subty = '0010'.
 
     if zemail <> wa_upload-usrid3.
@@ -6604,7 +6604,7 @@ form other .
         select single begda from pa0105 into p0105-begda
           where pernr = wa_upload-pernr
             and subty = '0010'
-            and endda = '99991231'.
+            and endda >= sy-datum." '99991231'.
 
         if sy-subrc = 0.
           p0105-pernr = wa_upload-pernr.
@@ -6654,7 +6654,7 @@ form other .
           into temp_pernr
           where pernr = wa_upload-pernr
           and subty = '0010'
-          and endda = '99991231'.
+          and endda >= sy-datum ."'99991231'.
 *    IF SY-SUBRC = 0.
 *      OPER = 'MOD'.
 *    ELSE.
@@ -6709,7 +6709,7 @@ form other .
       from pa0105
       into zfanat
       where pernr =  wa_upload-pernr
-      and endda = '99991231'
+      and endda >= sy-datum " '99991231'
       and subty = 'CELL'.
 
     if zfanat <> wa_upload-fanat .
@@ -6732,7 +6732,7 @@ form other .
         into temp_pernr
         where pernr = wa_upload-pernr
         and subty = 'CELL'
-        and endda = '99991231'.
+        and endda >= sy-datum ." '99991231'.
 *    IF SY-SUBRC = 0.
 *      OPER = 'MOD'.
 *    ELSE.
@@ -8545,7 +8545,7 @@ form send_mail .
 
   data: zemail_105 type pa0105-usrid_long.
 
-  select single usrid_long from pa0105 into zemail_105 where pernr =  wa_upload-pernr and subty = '0010'.
+  select single usrid_long from pa0105 into zemail_105 where pernr =  wa_upload-pernr and subty = '0010' AND endda >= sy-datum.
   if sy-subrc = 0.
     concatenate 'Email :' zemail_105 into lt_mailtxt separated by space.
     append lt_mailtxt.
@@ -8711,7 +8711,7 @@ form update_indonet_master .
 
     data: zemail_105 type pa0105-usrid_long.
 
-    select single usrid_long from pa0105 into zemail_105 where pernr =  wa_upload-pernr and subty = '0010'.
+    select single usrid_long from pa0105 into zemail_105 where pernr =  wa_upload-pernr and subty = '0010' AND endda >= sy-datum.
     if sy-subrc = 0.
       concatenate 'Email :' zemail_105 into lt_mailtxt separated by space.
       append lt_mailtxt.
