@@ -85,6 +85,10 @@ endmethod.
   endmethod.
 
 
+  method IF_EX_PT_GEN_REQ~ENRICH_ICS_CALENDAR.
+  endmethod.
+
+
   method IF_EX_PT_GEN_REQ~FILTER_NEXT_PROCESSOR.
   endmethod.
 

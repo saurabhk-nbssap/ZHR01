@@ -82,4 +82,8 @@ endif.
 
 
   endmethod.
+
+
+  method IF_EX_HRPAD00AUTH_TIME~RESTRICT_TIME_ACCESS.
+  endmethod.
 ENDCLASS.
