@@ -5548,6 +5548,27 @@
      <SOURCE_LINE>endmethod.</SOURCE_LINE>
     </WDY_CTLR_COMPO_SOURCE_VRS>
    </SOURCES>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>5825D84966434555E1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AEA=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>5825D84966434555E1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>029</LENGTH>
+       <TEXT>Current Fiscal Year</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
   </asx:values>
  </asx:abap>
 </abapGit>
