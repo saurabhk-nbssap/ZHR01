@@ -20,232 +20,146 @@
      <SOURCE>
       <item>IF l_check_res IS INITIAL.</item>
       <item/>
-      <item>MOVE pwa_beleg-belnr TO l_row.</item>
-      <item>PERFORM re702g</item>
-      <item>USING pwa_head-morei</item>
-      <item>pwa_head-kzrea</item>
-      <item>l_error_append</item>
-      <item>space</item>
-      <item>space</item>
+      <item>    MOVE pwa_beleg-belnr TO l_row.</item>
+      <item>    PERFORM re702g</item>
+      <item>       USING pwa_head-morei</item>
+      <item>             pwa_head-kzrea</item>
+      <item>             l_error_append</item>
+      <item>             space</item>
+      <item>             space</item>
       <item>*             space</item>
-      <item>l_row</item>
-      <item>space</item>
-      <item>CHANGING lwa_t702g</item>
-      <item>p_error_occurred.</item>
-      <item>IF p_error_occurred IS NOT INITIAL.</item>
-      <item>pwa_beleg-check_result = &apos;E&apos;.</item>
-      <item>RETURN.</item>
-      <item>ENDIF.</item>
+      <item>             l_row</item>
+      <item>             space</item>
+      <item>    CHANGING lwa_t702g</item>
+      <item>             p_error_occurred.</item>
+      <item>    IF p_error_occurred IS NOT INITIAL.</item>
+      <item>      pwa_beleg-check_result = &apos;E&apos;.</item>
+      <item>      RETURN.</item>
+      <item>    ENDIF.</item>
       <item/>
-      <item>PERFORM re702n_italy_banking_sector</item>
-      <item>USING pwa_head</item>
-      <item>l_error_append</item>
-      <item>CHANGING l_italy_banking_sector</item>
-      <item>p_error_occurred.</item>
-      <item>IF p_error_occurred IS NOT INITIAL.</item>
-      <item>pwa_beleg-check_result = &apos;E&apos;.</item>
-      <item>RETURN.</item>
-      <item>ENDIF.</item>
+      <item>    PERFORM re702n_italy_banking_sector</item>
+      <item>        USING pwa_head</item>
+      <item>              l_error_append</item>
+      <item>     CHANGING l_italy_banking_sector</item>
+      <item>              p_error_occurred.</item>
+      <item>    IF p_error_occurred IS NOT INITIAL.</item>
+      <item>      pwa_beleg-check_result = &apos;E&apos;.</item>
+      <item>      RETURN.</item>
+      <item>    ENDIF.</item>
       <item/>
       <item>* when receipt date not in trip interval...</item>
-      <item>IF ( pwa_beleg-beart = &apos;V&apos; OR</item>
-      <item>( pwa_head-molga EQ &apos;15&apos; AND</item>
-      <item>( ( lwa_t702g-geskz EQ &apos;D&apos; AND</item>
-      <item>l_italy_banking_sector EQ &apos;X&apos; AND</item>
-      <item>( pwa_beleg-beart = &apos;M&apos; OR</item>
-      <item>pwa_beleg-beart = &apos;U&apos; ) ) OR</item>
-      <item>( ( lwa_t702g-geskz EQ &apos;D&apos; OR</item>
-      <item>lwa_t702g-geskz EQ &apos;C&apos; OR</item>
-      <item>lwa_t702g-geskz EQ &apos;6&apos; OR</item>
-      <item>lwa_t702g-geskz EQ &apos;7&apos; OR</item>
-      <item>lwa_t702g-geskz EQ &apos;8&apos; OR</item>
-      <item>lwa_t702g-geskz EQ &apos;G&apos; ) AND</item>
-      <item>pwa_beleg-beart = &apos;S&apos; ) ) ) ).</item>
+      <item>    IF ( pwa_beleg-beart = &apos;V&apos; OR</item>
+      <item>      ( pwa_head-molga EQ &apos;15&apos; AND</item>
+      <item>        ( ( lwa_t702g-geskz EQ &apos;D&apos; AND</item>
+      <item>            l_italy_banking_sector EQ &apos;X&apos; AND</item>
+      <item>            ( pwa_beleg-beart = &apos;M&apos; OR</item>
+      <item>              pwa_beleg-beart = &apos;U&apos; ) ) OR</item>
+      <item>          ( ( lwa_t702g-geskz EQ &apos;D&apos; OR</item>
+      <item>              lwa_t702g-geskz EQ &apos;C&apos; OR</item>
+      <item>              lwa_t702g-geskz EQ &apos;6&apos; OR</item>
+      <item>              lwa_t702g-geskz EQ &apos;7&apos; OR</item>
+      <item>              lwa_t702g-geskz EQ &apos;8&apos; OR</item>
+      <item>              lwa_t702g-geskz EQ &apos;G&apos; ) AND</item>
+      <item>            pwa_beleg-beart = &apos;S&apos; ) ) ) ).</item>
       <item>* ...then bring in some special cases error or repeated warning message</item>
-      <item>p_msgtype_occurred = &apos;X&apos;.</item>
-      <item>IF p_msgtype_append IS NOT INITIAL.</item>
-      <item>l_msgtype = p_msgtype.</item>
-      <item>ELSE.</item>
-      <item>CLEAR l_msgtype.</item>
-      <item>ENDIF.</item>
-      <item>l_warning_only_once = space.</item>
-      <item>ELSE.</item>
+      <item>      p_msgtype_occurred = &apos;X&apos;.</item>
+      <item>      IF p_msgtype_append IS NOT INITIAL.</item>
+      <item>        l_msgtype = p_msgtype.</item>
+      <item>      ELSE.</item>
+      <item>        CLEAR l_msgtype.</item>
+      <item>      ENDIF.</item>
+      <item>      l_warning_only_once = space.</item>
+      <item>    ELSE.</item>
       <item>* ...but normally bring warning message only once</item>
-      <item>if pwa_head-molga NE &apos;40&apos;.</item>
-      <item>l_msgtype           = &apos;W&apos;.</item>
-      <item>l_warning_only_once = &apos;X&apos;.</item>
-      <item>ELSE.</item>
-      <item>l_msgtype           = &apos;E&apos;.</item>
-      <item>l_warning_only_once = &apos; &apos;.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>     if pwa_head-molga NE &apos;40&apos;.</item>
+      <item>      l_msgtype           = &apos;W&apos;.</item>
+      <item>      l_warning_only_once = &apos;X&apos;.</item>
+      <item>     ELSE.</item>
+      <item>         l_msgtype           = &apos;E&apos;.</item>
+      <item>      l_warning_only_once = &apos; &apos;.</item>
+      <item>     ENDIF.</item>
+      <item>    ENDIF.</item>
       <item/>
-      <item>IF l_msgtype IS NOT INITIAL.</item>
+      <item>    IF l_msgtype IS NOT INITIAL.</item>
       <item/>
-      <item>MOVE pwa_beleg-belnr TO l_row.</item>
-      <item>WRITE: pwa_beleg-belnr TO l_msgv1,</item>
-      <item>pwa_beleg-bldat TO l_msgv2.</item>
+      <item>      MOVE pwa_beleg-belnr TO l_row.</item>
+      <item>      WRITE: pwa_beleg-belnr TO l_msgv1,</item>
+      <item>             pwa_beleg-bldat TO l_msgv2.</item>
       <item/>
-      <item>CLEAR l_message_exists.</item>
-      <item>IF l_msgtype EQ &apos;W&apos;.</item>
-      <item>CALL FUNCTION &apos;PTRM_UTIL_MESSAGES_MEM_CHECK&apos;</item>
-      <item>EXPORTING</item>
-      <item>i_msgty_only_once_message = l_msgtype</item>
-      <item>i_msgid_only_once_message = &apos;PTRA_WEB_INTERFACE&apos;</item>
-      <item>i_msgno_only_once_message = &apos;039&apos;</item>
-      <item>i_msgv1_only_once_message = l_msgv1</item>
-      <item>i_msgv2_only_once_message = l_msgv2</item>
-      <item>IMPORTING</item>
-      <item>e_message_exists          = l_message_exists.</item>
-      <item>ENDIF.</item>
+      <item>      CLEAR l_message_exists.</item>
+      <item>      IF l_msgtype EQ &apos;W&apos;.</item>
+      <item>        CALL FUNCTION &apos;PTRM_UTIL_MESSAGES_MEM_CHECK&apos;</item>
+      <item>          EXPORTING</item>
+      <item>            i_msgty_only_once_message = l_msgtype</item>
+      <item>            i_msgid_only_once_message = &apos;PTRA_WEB_INTERFACE&apos;</item>
+      <item>            i_msgno_only_once_message = &apos;039&apos;</item>
+      <item>            i_msgv1_only_once_message = l_msgv1</item>
+      <item>            i_msgv2_only_once_message = l_msgv2</item>
+      <item>          IMPORTING</item>
+      <item>            e_message_exists          = l_message_exists.</item>
+      <item>      ENDIF.</item>
       <item/>
-      <item>IF p_no_messages IS INITIAL.</item>
+      <item>      IF p_no_messages IS INITIAL.</item>
       <item>*</item>
-      <item>CALL FUNCTION &apos;PTRM_UTIL_MESSAGE_APPEND&apos;</item>
-      <item>EXPORTING</item>
-      <item>i_msgtype           = l_msgtype</item>
-      <item>i_msgid             = &apos;PTRA_WEB_INTERFACE&apos;</item>
-      <item>i_msgnumber         = &apos;039&apos;</item>
-      <item>i_msgv1             = l_msgv1</item>
-      <item>i_msgv2             = l_msgv2</item>
-      <item>i_parameter         = &apos;BELEG&apos;</item>
-      <item>i_field             = &apos;BLDAT&apos;</item>
-      <item>i_row               = l_row</item>
-      <item>i_warning_only_once = l_warning_only_once.</item>
-      <item>ENDIF.</item>
+      <item>        CALL FUNCTION &apos;PTRM_UTIL_MESSAGE_APPEND&apos;</item>
+      <item>          EXPORTING</item>
+      <item>            i_msgtype           = l_msgtype</item>
+      <item>            i_msgid             = &apos;PTRA_WEB_INTERFACE&apos;</item>
+      <item>            i_msgnumber         = &apos;039&apos;</item>
+      <item>            i_msgv1             = l_msgv1</item>
+      <item>            i_msgv2             = l_msgv2</item>
+      <item>            i_parameter         = &apos;BELEG&apos;</item>
+      <item>            i_field             = &apos;BLDAT&apos;</item>
+      <item>            i_row               = l_row</item>
+      <item>            i_warning_only_once = l_warning_only_once.</item>
+      <item>      ENDIF.</item>
       <item/>
       <item>*      IF l_message_exists IS INITIAL. &quot; THXP7HK028988 22022008</item>
       <item>* Warning will be processed the first time</item>
-      <item>pwa_beleg-check_result = l_msgtype.</item>
+      <item>      pwa_beleg-check_result = l_msgtype.</item>
       <item>*      ELSE. &quot; THXP7HK028988 22022008</item>
       <item>* Warning was already processed, do nothing...</item>
       <item>*      ENDIF.  &quot; THXP7HK028988 22022008</item>
-      <item>IF l_msgtype = &apos;E&apos;.</item>
-      <item>RETURN.</item>
-      <item>ENDIF.</item>
+      <item>      IF l_msgtype = &apos;E&apos;.</item>
+      <item>        RETURN.</item>
+      <item>      ENDIF.</item>
       <item/>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>    ENDIF.</item>
+      <item>  ENDIF.</item>
       <item/>
      </SOURCE>
     </ENH_HOOK_IMPL>
    </ENHANCEMENTS>
-   <SPACES>
+   <SOTR>
     <item>
-     <FULL_NAME>\PR:SAPLPTRA_UTIL_RECEIPTS\FO:CHECK_BLDAT\SE:END\EI</FULL_NAME>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-      <item>4</item>
-      <item>7</item>
-      <item>13</item>
-      <item>13</item>
-      <item>13</item>
-      <item>13</item>
-      <item>0</item>
-      <item>13</item>
-      <item>13</item>
-      <item>4</item>
-      <item>13</item>
-      <item>4</item>
-      <item>6</item>
-      <item>6</item>
-      <item>4</item>
-      <item>0</item>
-      <item>4</item>
-      <item>8</item>
-      <item>14</item>
-      <item>5</item>
-      <item>14</item>
-      <item>4</item>
-      <item>6</item>
-      <item>6</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-      <item>6</item>
-      <item>8</item>
-      <item>12</item>
-      <item>12</item>
-      <item>14</item>
-      <item>10</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>12</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>8</item>
-      <item>6</item>
-      <item>8</item>
-      <item>6</item>
-      <item>6</item>
-      <item>4</item>
-      <item>0</item>
-      <item>5</item>
-      <item>6</item>
-      <item>6</item>
-      <item>5</item>
-      <item>9</item>
-      <item>6</item>
-      <item>5</item>
-      <item>4</item>
-      <item>0</item>
-      <item>4</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>13</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>8</item>
-      <item>10</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>10</item>
-      <item>12</item>
-      <item>6</item>
-      <item>0</item>
-      <item>6</item>
-      <item>0</item>
-      <item>8</item>
-      <item>10</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>12</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>8</item>
-      <item>6</item>
-      <item>0</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-     </SPACES>
+     <HEADER>
+      <CONCEPT>4C8E20F6DDC43A27E1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>4C8E20F6DDC43A27E1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>042</LENGTH>
+       <TEXT>Travel Receipts Enhancements</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
     </item>
-   </SPACES>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>Z6HR020B_TRAVEL_RECEIPT_ENHS</OBJ_NAME>
+     <CONCEPT>4C8E20F6DDC43A27E1000000C0A80A1D</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
   </asx:values>
  </asx:abap>
 </abapGit>

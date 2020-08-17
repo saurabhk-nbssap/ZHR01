@@ -657,35 +657,35 @@
        <LINE>*&amp;SPWIZARD: PBO FLOW LOGIC FOR TABLECONTROL &apos;WB_INT_DATA&apos;</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE WB_INT_DATA_CHANGE_TC_ATTR.</LINE>
+       <LINE>  MODULE WB_INT_DATA_CHANGE_TC_ATTR.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*&amp;SPWIZARD: MODULE WB_INT_DATA_CHANGE_COL_ATTR.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT   IFINAL</LINE>
+       <LINE>  LOOP AT   IFINAL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>INTO IFINAL_WA</LINE>
+       <LINE>       INTO IFINAL_WA</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>WITH CONTROL WB_INT_DATA</LINE>
+       <LINE>       WITH CONTROL WB_INT_DATA</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CURSOR WB_INT_DATA-CURRENT_LINE.</LINE>
+       <LINE>       CURSOR WB_INT_DATA-CURRENT_LINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE WB_INT_DATA_GET_LINES.</LINE>
+       <LINE>    MODULE WB_INT_DATA_GET_LINES.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*&amp;SPWIZARD:   MODULE WB_INT_DATA_CHANGE_FIELD_ATTR</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE>  ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>MODULE STATUS_2000.</LINE>
+       <LINE>  MODULE STATUS_2000.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -697,37 +697,37 @@
        <LINE>*&amp;SPWIZARD: PAI FLOW LOGIC FOR TABLECONTROL &apos;WB_INT_DATA&apos;</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT IFINAL.</LINE>
+       <LINE>  LOOP AT IFINAL.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>    CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-MBLNR.</LINE>
+       <LINE>      FIELD IFINAL_WA-MBLNR.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-MJAHR.</LINE>
+       <LINE>      FIELD IFINAL_WA-MJAHR.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-WERKS.</LINE>
+       <LINE>      FIELD IFINAL_WA-WERKS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-MENGE.</LINE>
+       <LINE>      FIELD IFINAL_WA-MENGE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-MEINS.</LINE>
+       <LINE>      FIELD IFINAL_WA-MEINS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-GATEN.</LINE>
+       <LINE>      FIELD IFINAL_WA-GATEN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-VEHNO.</LINE>
+       <LINE>      FIELD IFINAL_WA-VEHNO.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-LRNUM.</LINE>
+       <LINE>      FIELD IFINAL_WA-LRNUM.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-LRDAT.</LINE>
+       <LINE>      FIELD IFINAL_WA-LRDAT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*      FIELD IFINAL_WA-REDAT.</LINE>
@@ -742,28 +742,28 @@
        <LINE>*      FIELD IFINAL_WA-AREDT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-GR_WT.</LINE>
+       <LINE>      FIELD IFINAL_WA-GR_WT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-TR_WT.</LINE>
+       <LINE>      FIELD IFINAL_WA-TR_WT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-NET_WT.</LINE>
+       <LINE>      FIELD IFINAL_WA-NET_WT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>endchain.</LINE>
+       <LINE>    endchain.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD IFINAL_WA-SEL</LINE>
+       <LINE>    FIELD IFINAL_WA-SEL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE WB_INT_DATA_MARK ON REQUEST.</LINE>
+       <LINE>      MODULE WB_INT_DATA_MARK ON REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE>  ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE WB_INT_DATA_USER_COMMAND.</LINE>
+       <LINE>  MODULE WB_INT_DATA_USER_COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*&amp;SPWIZARD: MODULE WB_INT_DATA_CHANGE_TC_ATTR.</LINE>
@@ -776,52 +776,6 @@
        <LINE>* MODULE USER_COMMAND_2000.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>7</item>
-      <item>7</item>
-      <item>7</item>
-      <item>4</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>4</item>
-      <item>4</item>
-      <item>6</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
     </item>
    </DYNPROS>
    <CUA>

@@ -92,7 +92,7 @@
        <LINE>*                       processing before output</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE INIT_DIALOG.</LINE>
+       <LINE>  MODULE INIT_DIALOG.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -104,33 +104,12 @@
        <LINE>*                        processing after input</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE OPERATION.</LINE>
+       <LINE>  MODULE OPERATION.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW/>
       <RPY_DYFLOW/>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -988,25 +967,25 @@
        <LINE>*         general infotype-independent operations</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE BEFORE_OUTPUT.</LINE>
+       <LINE>  MODULE BEFORE_OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN subscreen_empl   INCLUDING empl_prog empl_dynnr.</LINE>
+       <LINE>  CALL SUBSCREEN subscreen_empl   INCLUDING empl_prog empl_dynnr.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN subscreen_header INCLUDING header_prog header_dynnr.</LINE>
+       <LINE>  CALL SUBSCREEN subscreen_header INCLUDING header_prog header_dynnr.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*         infotype specific operations</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE P9001.</LINE>
+       <LINE>  MODULE P9001.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE HIDDEN_DATA.</LINE>
+       <LINE>  MODULE HIDDEN_DATA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -1024,7 +1003,7 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE EXIT AT EXIT-COMMAND.</LINE>
+       <LINE>  MODULE EXIT AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -1048,70 +1027,70 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>  CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-BEGDA.</LINE>
+       <LINE>    FIELD P9001-BEGDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-ENDDA.</LINE>
+       <LINE>    FIELD P9001-ENDDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-REF_CHECK.</LINE>
+       <LINE>    FIELD P9001-REF_CHECK.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-REF_DATE.</LINE>
+       <LINE>    FIELD P9001-REF_DATE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NUM02.</LINE>
+       <LINE>    FIELD P9001-NUM02.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-COM02.</LINE>
+       <LINE>    FIELD P9001-COM02.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NUM01.</LINE>
+       <LINE>    FIELD P9001-NUM01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-COM01.</LINE>
+       <LINE>    FIELD P9001-COM01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-PSTLZ.</LINE>
+       <LINE>    FIELD P9001-PSTLZ.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-ORT01.</LINE>
+       <LINE>    FIELD P9001-ORT01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-LOCAT.</LINE>
+       <LINE>    FIELD P9001-LOCAT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-STRAS.</LINE>
+       <LINE>    FIELD P9001-STRAS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NAME2.</LINE>
+       <LINE>    FIELD P9001-NAME2.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-OCCUP.</LINE>
+       <LINE>    FIELD P9001-OCCUP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NACHN.</LINE>
+       <LINE>    FIELD P9001-NACHN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-VORNA.</LINE>
+       <LINE>    FIELD P9001-VORNA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-TITEL.</LINE>
+       <LINE>    FIELD P9001-TITEL.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-PR_COMP.</LINE>
+       <LINE>    FIELD P9001-PR_COMP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*    FIELD P9001-NAME.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE INPUT_STATUS ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE INPUT_STATUS ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>  ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -1123,7 +1102,7 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE PRE_INPUT_CHECKS.</LINE>
+       <LINE>  MODULE PRE_INPUT_CHECKS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -1156,73 +1135,73 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>  CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-BEGDA.</LINE>
+       <LINE>    FIELD P9001-BEGDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-ENDDA.</LINE>
+       <LINE>    FIELD P9001-ENDDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-SPRTX.</LINE>
+       <LINE>    FIELD RP50M-SPRTX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-REF_CHECK.</LINE>
+       <LINE>    FIELD P9001-REF_CHECK.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-REF_DATE.</LINE>
+       <LINE>    FIELD P9001-REF_DATE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NUM02.</LINE>
+       <LINE>    FIELD P9001-NUM02.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-COM02.</LINE>
+       <LINE>    FIELD P9001-COM02.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NUM01.</LINE>
+       <LINE>    FIELD P9001-NUM01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-COM01.</LINE>
+       <LINE>    FIELD P9001-COM01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-PSTLZ.</LINE>
+       <LINE>    FIELD P9001-PSTLZ.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-ORT01.</LINE>
+       <LINE>    FIELD P9001-ORT01.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-LOCAT.</LINE>
+       <LINE>    FIELD P9001-LOCAT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-STRAS.</LINE>
+       <LINE>    FIELD P9001-STRAS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NAME2.</LINE>
+       <LINE>    FIELD P9001-NAME2.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-OCCUP.</LINE>
+       <LINE>    FIELD P9001-OCCUP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-NACHN.</LINE>
+       <LINE>    FIELD P9001-NACHN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-VORNA.</LINE>
+       <LINE>    FIELD P9001-VORNA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-TITEL.</LINE>
+       <LINE>    FIELD P9001-TITEL.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P9001-PR_COMP.</LINE>
+       <LINE>    FIELD P9001-PR_COMP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*    FIELD P9001-NAME.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE POST_INPUT_CHECKS.</LINE>
+       <LINE>    MODULE POST_INPUT_CHECKS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>  ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -1232,96 +1211,6 @@
       <RPY_DYFLOW/>
       <RPY_DYFLOW/>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>0</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>0</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -2362,16 +2251,16 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE BEFORE_OUTPUT.</LINE>
+       <LINE>  MODULE BEFORE_OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN subscreen_empl INCLUDING empl_prog empl_dynnr.</LINE>
+       <LINE>  CALL SUBSCREEN subscreen_empl INCLUDING empl_prog empl_dynnr.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE ASSIGN_TC3000.</LINE>
+       <LINE>  MODULE ASSIGN_TC3000.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE VARIATION_TC.</LINE>
+       <LINE>  MODULE VARIATION_TC.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -2383,10 +2272,10 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP.</LINE>
+       <LINE>  LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE PSLIST_TC.</LINE>
+       <LINE>    MODULE PSLIST_TC.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -2398,13 +2287,13 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE P9001L.</LINE>
+       <LINE>    MODULE P9001L.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE>  ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN SUBSCREEN_HEADER INCLUDING HEADER_PROG HEADER_DYNNR.</LINE>
+       <LINE>  CALL SUBSCREEN SUBSCREEN_HEADER INCLUDING HEADER_PROG HEADER_DYNNR.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -2422,7 +2311,7 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE EXIT AT EXIT-COMMAND.</LINE>
+       <LINE>  MODULE EXIT AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -2434,13 +2323,13 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP.</LINE>
+       <LINE>  LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-SELE2 MODULE MARK ON REQUEST.</LINE>
+       <LINE>    FIELD RP50M-SELE2 MODULE MARK ON REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE>  ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -2455,31 +2344,31 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN subscreen_empl.</LINE>
+       <LINE>  CALL SUBSCREEN subscreen_empl.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>  CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-BEGDA.</LINE>
+       <LINE>    FIELD RP50M-BEGDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-ENDDA.</LINE>
+       <LINE>    FIELD RP50M-ENDDA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-SUBTY.</LINE>
+       <LINE>    FIELD RP50M-SUBTY.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SELECT_FOR_LIST ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SELECT_FOR_LIST ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>  ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD RP50M-PAGEA ON REQUEST MODULE TOP_OF_LIST.</LINE>
+       <LINE>  FIELD RP50M-PAGEA ON REQUEST MODULE TOP_OF_LIST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE ADJUST_LIST_TC.</LINE>
+       <LINE>  MODULE ADJUST_LIST_TC.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*---------------------------------------------------------------------*</LINE>
@@ -2491,59 +2380,9 @@
        <LINE>*---------------------------------------------------------------------*</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE POST_INPUT_CHECKS.</LINE>
+       <LINE>  MODULE POST_INPUT_CHECKS.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-     </SPACES>
     </item>
    </DYNPROS>
    <CUA>

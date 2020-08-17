@@ -25,17 +25,36 @@
      </SOURCE>
     </ENH_HOOK_IMPL>
    </ENHANCEMENTS>
-   <SPACES>
+   <SOTR>
     <item>
-     <FULL_NAME>\PR:SAPLPT_ARQ_REQUEST_UIA\FO:CLEAR_CLOCK_TIMES\SE:END\EI</FULL_NAME>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
+     <HEADER>
+      <CONCEPT>4C884440932F3A2AE1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>4C884440932F3A2AE1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>081</LENGTH>
+       <TEXT>Enhancement for Making Times in Case of Half Day Leave</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
     </item>
-   </SPACES>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>Z6HR06B_DEFAULT_HALF_DAY_LEAVE</OBJ_NAME>
+     <CONCEPT>4C884440932F3A2AE1000000C0A80A1D</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
   </asx:values>
  </asx:abap>
 </abapGit>

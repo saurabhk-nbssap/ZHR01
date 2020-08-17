@@ -5,6 +5,36 @@
    <TOOL>BADI_IMPL</TOOL>
    <SHORTTEXT>Leave Request Screen Attributes</SHORTTEXT>
    <SPOT_NAME>PT_GEN_REQ</SPOT_NAME>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>4C52AA3D3D663A2CE1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>4C52AA3D3D663A2CE1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>047</LENGTH>
+       <TEXT>Leave Request Screen Attributes</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>Z6HR06B_LEAVE_REQ_SCREEN</OBJ_NAME>
+     <CONCEPT>4C52AA3D3D663A2CE1000000C0A80A1D</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
   </asx:values>
  </asx:abap>
 </abapGit>

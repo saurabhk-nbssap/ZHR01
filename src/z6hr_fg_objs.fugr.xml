@@ -617,19 +617,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZVI_T7IND3 CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZVI_T7IND3 CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -638,100 +638,69 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-INDCD .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-INDCD .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-ENDDA .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-ENDDA .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-RFVAL .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-RFVAL .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-CRVAL .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-CRVAL .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-REFCD .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-REFCD .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-BEGDA .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-BEGDA .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-INDCD .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-INDCD .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZVI_T7IND3-ENDDA .</LINE>
+       <LINE>    FIELD ZVI_T7IND3-ENDDA .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
    </DYNPROS>
   </asx:values>

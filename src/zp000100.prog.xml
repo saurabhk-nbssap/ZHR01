@@ -207,13 +207,13 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE MODIFY_SUBSCREEN.</LINE>
+       <LINE>  MODULE MODIFY_SUBSCREEN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE MODULE_PBO_0001.</LINE>
+       <LINE>  MODULE MODULE_PBO_0001.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE HIDDEN_DATA_SUBSCREEN.</LINE>
+       <LINE>  MODULE HIDDEN_DATA_SUBSCREEN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -225,52 +225,33 @@
        <LINE>*   This chain has to include all input-fields:</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>  CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P0001-ZZLOC_TEXT.</LINE>
+       <LINE>    FIELD P0001-ZZLOC_TEXT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P0001-ZZAOP.</LINE>
+       <LINE>    FIELD P0001-ZZAOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P0001-ZZLOCATION_KEY.</LINE>
+       <LINE>    FIELD P0001-ZZLOCATION_KEY.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD P0001-ZZSTATE.</LINE>
+       <LINE>    FIELD P0001-ZZSTATE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE INPUT_STATUS_SUBSCREEN ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE INPUT_STATUS_SUBSCREEN ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>  ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*   infotype specific checks etc.:</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE MODULE_PAI_0001.</LINE>
+       <LINE>  MODULE MODULE_PAI_0001.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-     </SPACES>
     </item>
    </DYNPROS>
   </asx:values>

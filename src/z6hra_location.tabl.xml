@@ -120,6 +120,12 @@
      <CLASFIELD>*</CLASFIELD>
     </DD08V>
    </DD08V_TABLE>
+   <TABL_EXTRAS>
+    <TDDAT>
+     <TABNAME>Z6HRA_LOCATION</TABNAME>
+     <CCLASS>&amp;NC&amp;</CCLASS>
+    </TDDAT>
+   </TABL_EXTRAS>
   </asx:values>
  </asx:abap>
 </abapGit>

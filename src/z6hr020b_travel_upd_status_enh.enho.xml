@@ -20,24 +20,24 @@
      <SOURCE>
       <item>TABLES : z6hra_trip_stats.</item>
       <item>DATA : wa1_trip TYPE z6hra_trip_stats,</item>
-      <item>wa_trip TYPE z6hra_trip_stats,</item>
-      <item>wa_t526 TYPE  t526.</item>
+      <item>       wa_trip TYPE z6hra_trip_stats,</item>
+      <item>       wa_t526 TYPE  t526.</item>
       <item>DATA: uid TYPE char8,</item>
-      <item>count TYPE i,</item>
-      <item>tripno TYPE char10,</item>
-      <item>objkey TYPE SWO_TYPEID,</item>
-      <item>approver TYPE char16,</item>
-      <item>it_worklist TYPE STANDARD TABLE OF SWR_WIHDR,</item>
-      <item>wa_worklist TYPE SWR_WIHDR,</item>
-      <item>it_container TYPE STANDARD TABLE OF SWR_CONT,</item>
-      <item>wa_container TYPE SWR_CONT.</item>
+      <item>      count TYPE i,</item>
+      <item>      tripno TYPE char10,</item>
+      <item>      objkey TYPE SWO_TYPEID,</item>
+      <item>      approver TYPE char16,</item>
+      <item>      it_worklist TYPE STANDARD TABLE OF SWR_WIHDR,</item>
+      <item>      wa_worklist TYPE SWR_WIHDR,</item>
+      <item>      it_container TYPE STANDARD TABLE OF SWR_CONT,</item>
+      <item>      wa_container TYPE SWR_CONT.</item>
       <item/>
       <item>* Begin of Change by Neha (IBM) 12.11.2014</item>
       <item>CONSTANTS : lc_csa TYPE t526-sachx VALUE &apos;CSA&apos;,</item>
-      <item>lc_aaa TYPE t526-sachx VALUE &apos;AAA&apos;,</item>
-      <item>lc_spc TYPE t526-sachx VALUE &apos;SPC&apos;. &quot;Speciality &amp; Performance Chemical Division</item>
+      <item>            lc_aaa TYPE t526-sachx VALUE &apos;AAA&apos;,</item>
+      <item>            lc_spc TYPE t526-sachx VALUE &apos;SPC&apos;. &quot;Speciality &amp; Performance Chemical Division</item>
       <item>DATA : lv_sbmod TYPE p0001-sbmod,</item>
-      <item>lv_orgeh TYPE p0001-orgeh.</item>
+      <item>       lv_orgeh TYPE p0001-orgeh.</item>
       <item>* Begin of Change by Neha (IBM) 12.11.2014</item>
       <item/>
       <item>uid = employeenumber.</item>
@@ -45,80 +45,80 @@
       <item>CONCATENATE uid tripno INTO objkey.</item>
       <item/>
       <item>CALL FUNCTION &apos;SAP_WAPI_WORKITEMS_TO_OBJECT&apos;</item>
-      <item>EXPORTING</item>
+      <item> EXPORTING</item>
       <item>*   OBJECT_POR                     =</item>
-      <item>OBJTYPE                        = &apos;BUS2089&apos;</item>
-      <item>OBJKEY                         = objkey</item>
-      <item>TOP_LEVEL_ITEMS                = &apos;X&apos;</item>
-      <item>SELECTION_STATUS_VARIANT       = 0000</item>
+      <item>   OBJTYPE                        = &apos;BUS2089&apos;</item>
+      <item>   OBJKEY                         = objkey</item>
+      <item>   TOP_LEVEL_ITEMS                = &apos;X&apos;</item>
+      <item>   SELECTION_STATUS_VARIANT       = 0000</item>
       <item>*   TIME                           =</item>
-      <item>TEXT                           = &apos;X&apos;</item>
+      <item>   TEXT                           = &apos;X&apos;</item>
       <item>*   OUTPUT_ONLY_TOP_LEVEL          = &apos; &apos;</item>
-      <item>LANGUAGE                       = SY-LANGU</item>
-      <item>DETERMINE_TASK_FILTER          = &apos;X&apos;</item>
+      <item>   LANGUAGE                       = SY-LANGU</item>
+      <item>   DETERMINE_TASK_FILTER          = &apos;X&apos;</item>
       <item>*   REMOVED_OBJECTS                = &apos; &apos;</item>
       <item>* IMPORTING</item>
       <item>*   RETURN_CODE                    =</item>
-      <item>TABLES</item>
+      <item>  TABLES</item>
       <item>*   TASK_FILTER                    =</item>
-      <item>worklist                       = it_worklist</item>
+      <item>    worklist                       = it_worklist</item>
       <item>*   MESSAGE_LINES                  =</item>
       <item>*   MESSAGE_STRUCT                 =</item>
-      <item>.</item>
+      <item>          .</item>
       <item/>
       <item>CLEAR: count.</item>
       <item>DESCRIBE TABLE it_worklist lines count.</item>
       <item>IF count = 1.</item>
-      <item>READ TABLE it_worklist INTO wa_worklist INDEX 1.</item>
+      <item>  READ TABLE it_worklist INTO wa_worklist INDEX 1.</item>
       <item>ELSE.</item>
-      <item>READ TABLE it_worklist INTO wa_worklist WITH KEY WI_STAT = &apos;STARTED&apos;.</item>
-      <item>IF sy-subrc &lt;&gt; 0.</item>
-      <item>SORT it_worklist by wi_cd wi_ct DESCENDING.</item>
-      <item>READ TABLE it_worklist INTO wa_worklist INDEX 1.</item>
-      <item>ENDIF.</item>
+      <item>  READ TABLE it_worklist INTO wa_worklist WITH KEY WI_STAT = &apos;STARTED&apos;.</item>
+      <item>  IF sy-subrc &lt;&gt; 0.</item>
+      <item>    SORT it_worklist by wi_cd wi_ct DESCENDING.</item>
+      <item>    READ TABLE it_worklist INTO wa_worklist INDEX 1.</item>
+      <item>  ENDIF.</item>
       <item>ENDIF.</item>
       <item/>
       <item>CALL FUNCTION &apos;SAP_WAPI_READ_CONTAINER&apos;</item>
-      <item>EXPORTING</item>
-      <item>workitem_id                    = wa_worklist-wi_id</item>
-      <item>LANGUAGE                        = SY-LANGU</item>
+      <item>  EXPORTING</item>
+      <item>    workitem_id                    = wa_worklist-wi_id</item>
+      <item>   LANGUAGE                        = SY-LANGU</item>
       <item>*   USER                           = SY-UNAME</item>
       <item>* IMPORTING</item>
       <item>*   RETURN_CODE                    =</item>
       <item>*   IFS_XML_CONTAINER              =</item>
       <item>*   IFS_XML_CONTAINER_SCHEMA       =</item>
-      <item>TABLES</item>
-      <item>SIMPLE_CONTAINER               = it_container</item>
+      <item> TABLES</item>
+      <item>   SIMPLE_CONTAINER               = it_container</item>
       <item>*   MESSAGE_LINES                  =</item>
       <item>*   MESSAGE_STRUCT                 =</item>
       <item>*   SUBCONTAINER_BOR_OBJECTS       =</item>
       <item>*   SUBCONTAINER_ALL_OBJECTS       =</item>
-      <item>.</item>
+      <item>          .</item>
       <item>&quot;Either Approver or Approver1 will be blank depending on who is approving the trip</item>
       <item>&quot;If Manager Approves</item>
       <item>READ TABLE it_container INTO wa_container WITH KEY element = &apos;APPROVER1&apos;.</item>
-      <item>IF sy-subrc = 0.</item>
-      <item>IF wa_container IS NOT INITIAL.</item>
-      <item>approver = wa_container-value+2.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>  IF sy-subrc = 0.</item>
+      <item>    IF wa_container IS NOT INITIAL.</item>
+      <item>    approver = wa_container-value+2.</item>
+      <item>    ENDIF.</item>
+      <item>  ENDIF.</item>
       <item/>
       <item>&quot;If Accountant Approves</item>
       <item>READ TABLE it_container INTO wa_container WITH KEY element = &apos;APPROVER&apos;.</item>
-      <item>IF sy-subrc = 0.</item>
-      <item>IF wa_container IS NOT INITIAL.</item>
-      <item>approver = wa_container-value+2.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>  IF sy-subrc = 0.</item>
+      <item>    IF wa_container IS NOT INITIAL.</item>
+      <item>    approver = wa_container-value+2.</item>
+      <item>    ENDIF.</item>
+      <item>  ENDIF.</item>
       <item/>
       <item>PERFORM get_single_head TABLES t_head</item>
-      <item>USING  employeenumber tripnumber</item>
-      <item>return.</item>
+      <item>                        USING  employeenumber tripnumber</item>
+      <item>                               return.</item>
       <item/>
       <item>READ TABLE t_head INDEX 1.</item>
       <item/>
       <item>PERFORM get_periods_for_head TABLES t_perio</item>
-      <item>USING  t_head-pernr t_head-reinr.</item>
+      <item>                             USING  t_head-pernr t_head-reinr.</item>
       <item/>
       <item>IF sy-subrc EQ 0.</item>
       <item/>
@@ -147,77 +147,77 @@
       <item>*</item>
       <item>*  ELSE.</item>
       <item/>
-      <item>MOVE-CORRESPONDING t_head TO z6hra_trip_stats.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>SELECT SINGLE * FROM z6hra_trip_stats INTO wa1_trip</item>
-      <item>WHERE pernr = employeenumber</item>
-      <item>AND reinr = tripnumber</item>
-      <item>AND antrg = &apos;4&apos;.</item>
-      <item>IF sy-subrc EQ 0.</item>
+      <item>  MOVE-CORRESPONDING t_head TO z6hra_trip_stats.</item>
+      <item>  MODIFY z6hra_trip_stats.</item>
+      <item>  CLEAR z6hra_trip_stats.</item>
+      <item>  SELECT SINGLE * FROM z6hra_trip_stats INTO wa1_trip</item>
+      <item>                                  WHERE pernr = employeenumber</item>
+      <item>                                    AND reinr = tripnumber</item>
+      <item>                                    AND antrg = &apos;4&apos;.</item>
+      <item>  IF sy-subrc EQ 0.</item>
       <item>* Begin of Change by Neha (IBM) 12.11.2014</item>
       <item>* Changes for Cash Voucher accountant</item>
-      <item>SELECT SINGLE orgeh sbmod</item>
-      <item>FROM pa0001 INTO (lv_orgeh, lv_sbmod)</item>
-      <item>WHERE pernr EQ employeenumber</item>
-      <item>AND begda LE sy-datum</item>
-      <item>AND endda GE sy-datum.</item>
-      <item>IF sy-subrc EQ 0.</item>
-      <item>IF t_head-schem eq &apos;01&apos; or t_head-schem eq &apos;PL&apos;.</item>
-      <item>SELECT SINGLE * FROM t526 INTO wa_t526</item>
-      <item>WHERE werks EQ lv_sbmod</item>
-      <item>AND sachx EQ lc_csa   &quot;&apos;CSA&apos;</item>
-      <item>AND usrid EQ approver.    &quot;sy-uname.</item>
-      <item>IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
-      <item>READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
-      <item>reinr = t_head-reinr</item>
-      <item>perio = periodnumber.</item>
+      <item>    SELECT SINGLE orgeh sbmod</item>
+      <item>      FROM pa0001 INTO (lv_orgeh, lv_sbmod)</item>
+      <item>     WHERE pernr EQ employeenumber</item>
+      <item>       AND begda LE sy-datum</item>
+      <item>       AND endda GE sy-datum.</item>
+      <item>    IF sy-subrc EQ 0.</item>
+      <item>    IF t_head-schem eq &apos;01&apos; or t_head-schem eq &apos;PL&apos;.</item>
+      <item>      SELECT SINGLE * FROM t526 INTO wa_t526</item>
+      <item>       WHERE werks EQ lv_sbmod</item>
+      <item>         AND sachx EQ lc_csa   &quot;&apos;CSA&apos;</item>
+      <item>         AND usrid EQ approver.    &quot;sy-uname.</item>
+      <item>      IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
+      <item>        READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
+      <item>                                   reinr = t_head-reinr</item>
+      <item>                                   perio = periodnumber.</item>
       <item/>
-      <item>IF t_head-schem  NE &apos;PL&apos;.</item>
-      <item>IF t_perio-antrg EQ &apos;4&apos;.</item>
-      <item>new_app = &apos;6&apos;.</item>
-      <item>CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
-      <item>EXPORTING</item>
-      <item>employeenumber = employeenumber</item>
-      <item>tripnumber     = tripnumber</item>
+      <item>        IF t_head-schem  NE &apos;PL&apos;.</item>
+      <item>          IF t_perio-antrg EQ &apos;4&apos;.</item>
+      <item>            new_app = &apos;6&apos;.</item>
+      <item>            CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
+      <item>             EXPORTING</item>
+      <item>                  employeenumber = employeenumber</item>
+      <item>                  tripnumber     = tripnumber</item>
       <item>*             PERIODNUMBER   = &apos;000&apos;                      &quot;XCIPSDETRG</item>
-      <item>periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
-      <item>approved_new   = new_app</item>
-      <item>IMPORTING</item>
-      <item>return         = return</item>
-      <item>EXCEPTIONS</item>
-      <item>OTHERS         = 0.</item>
-      <item>IF return-type = &apos;S&apos;.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>                  periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
+      <item>                  approved_new   = new_app</item>
+      <item>             IMPORTING</item>
+      <item>                  return         = return</item>
+      <item>             EXCEPTIONS</item>
+      <item>                  OTHERS         = 0.</item>
+      <item>            IF return-type = &apos;S&apos;.</item>
+      <item>              MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>              wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>              wa1_trip-pernr = employeenumber.</item>
+      <item>              wa1_trip-reinr = tripnumber.</item>
+      <item>              wa1_trip-ernam = sy-uname.</item>
+      <item>              wa1_trip-erdat = sy-datum.</item>
+      <item>              wa1_trip-ertim = sy-uzeit.</item>
+      <item>              MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>              MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ELSE.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
+      <item>              CLEAR z6hra_trip_stats.</item>
+      <item>            ELSE.</item>
+      <item>              MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>              wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>              wa1_trip-pernr = employeenumber.</item>
+      <item>              wa1_trip-reinr = tripnumber.</item>
+      <item>              wa1_trip-ernam = sy-uname.</item>
+      <item>              wa1_trip-erdat = sy-datum.</item>
+      <item>              wa1_trip-ertim = sy-uzeit.</item>
       <item/>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>z6hra_trip_stats = return-message.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>              MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>              z6hra_trip_stats = return-message.</item>
+      <item>              MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ENDIF.</item>
-      <item>status_new = new_app.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ELSE.&quot;If the approver is Accountant</item>
+      <item>              CLEAR z6hra_trip_stats.</item>
+      <item>            ENDIF.</item>
+      <item>            status_new = new_app.</item>
+      <item>          ENDIF.</item>
+      <item>        ENDIF.</item>
+      <item>      ELSE.&quot;If the approver is Accountant</item>
       <item>*         Approval Status</item>
       <item>*          new_app = &apos;4&apos;.</item>
       <item>*          CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
@@ -242,66 +242,66 @@
       <item>*                  return         = return</item>
       <item>*             EXCEPTIONS</item>
       <item>*                  OTHERS         = 0.</item>
-      <item>ENDIF.</item>
+      <item>      ENDIF.</item>
       <item>*   End of Change by Neha (IBM) 12.11.2014</item>
-      <item>ELSEIF t_head-schem eq &apos;02&apos;.</item>
-      <item>IF ( lv_orgeh EQ &apos;50000060&apos; OR lv_orgeh EQ &apos;50000070&apos; OR lv_orgeh EQ &apos;50000071&apos;</item>
-      <item>OR lv_orgeh EQ &apos;50002784&apos; OR lv_orgeh EQ &apos;50002785&apos; OR lv_orgeh EQ &apos;50002786&apos;</item>
-      <item>OR lv_orgeh EQ &apos;50002787&apos; OR lv_orgeh EQ &apos;50002788&apos; OR lv_orgeh EQ &apos;50002789&apos; ). &quot;Speciality &amp; Performance Chemical Division</item>
-      <item>SELECT SINGLE * FROM t526 INTO wa_t526</item>
-      <item>WHERE werks EQ lv_sbmod</item>
-      <item>AND sachx EQ lc_spc   &quot;&apos;SPC&apos;</item>
-      <item>AND usrid EQ approver.    &quot;sy-uname.</item>
-      <item>IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
-      <item>READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
-      <item>reinr = t_head-reinr</item>
-      <item>perio = periodnumber.</item>
+      <item>    ELSEIF t_head-schem eq &apos;02&apos;.</item>
+      <item>      IF ( lv_orgeh EQ &apos;50000060&apos; OR lv_orgeh EQ &apos;50000070&apos; OR lv_orgeh EQ &apos;50000071&apos;</item>
+      <item>        OR lv_orgeh EQ &apos;50002784&apos; OR lv_orgeh EQ &apos;50002785&apos; OR lv_orgeh EQ &apos;50002786&apos;</item>
+      <item>        OR lv_orgeh EQ &apos;50002787&apos; OR lv_orgeh EQ &apos;50002788&apos; OR lv_orgeh EQ &apos;50002789&apos; ). &quot;Speciality &amp; Performance Chemical Division</item>
+      <item>        SELECT SINGLE * FROM t526 INTO wa_t526</item>
+      <item>         WHERE werks EQ lv_sbmod</item>
+      <item>           AND sachx EQ lc_spc   &quot;&apos;SPC&apos;</item>
+      <item>           AND usrid EQ approver.    &quot;sy-uname.</item>
+      <item>        IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
+      <item>          READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
+      <item>                                     reinr = t_head-reinr</item>
+      <item>                                     perio = periodnumber.</item>
       <item/>
-      <item>IF t_head-schem  NE &apos;PL&apos;.</item>
-      <item>IF t_perio-antrg EQ &apos;4&apos;.</item>
-      <item>new_app = &apos;6&apos;.</item>
-      <item>CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
-      <item>EXPORTING</item>
-      <item>employeenumber = employeenumber</item>
-      <item>tripnumber     = tripnumber</item>
+      <item>          IF t_head-schem  NE &apos;PL&apos;.</item>
+      <item>            IF t_perio-antrg EQ &apos;4&apos;.</item>
+      <item>              new_app = &apos;6&apos;.</item>
+      <item>              CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
+      <item>               EXPORTING</item>
+      <item>                    employeenumber = employeenumber</item>
+      <item>                    tripnumber     = tripnumber</item>
       <item>*               PERIODNUMBER   = &apos;000&apos;                      &quot;XCIPSDETRG</item>
-      <item>periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
-      <item>approved_new   = new_app</item>
-      <item>IMPORTING</item>
-      <item>return         = return</item>
-      <item>EXCEPTIONS</item>
-      <item>OTHERS         = 0.</item>
-      <item>IF return-type = &apos;S&apos;.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>                    periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
+      <item>                    approved_new   = new_app</item>
+      <item>               IMPORTING</item>
+      <item>                    return         = return</item>
+      <item>               EXCEPTIONS</item>
+      <item>                    OTHERS         = 0.</item>
+      <item>              IF return-type = &apos;S&apos;.</item>
+      <item>                MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>                wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>                wa1_trip-pernr = employeenumber.</item>
+      <item>                wa1_trip-reinr = tripnumber.</item>
+      <item>                wa1_trip-ernam = sy-uname.</item>
+      <item>                wa1_trip-erdat = sy-datum.</item>
+      <item>                wa1_trip-ertim = sy-uzeit.</item>
+      <item>                MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>                MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ELSE.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
+      <item>                CLEAR z6hra_trip_stats.</item>
+      <item>              ELSE.</item>
+      <item>                MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>                wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>                wa1_trip-pernr = employeenumber.</item>
+      <item>                wa1_trip-reinr = tripnumber.</item>
+      <item>                wa1_trip-ernam = sy-uname.</item>
+      <item>                wa1_trip-erdat = sy-datum.</item>
+      <item>                wa1_trip-ertim = sy-uzeit.</item>
       <item/>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>z6hra_trip_stats = return-message.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>                MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>                z6hra_trip_stats = return-message.</item>
+      <item>                MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ENDIF.</item>
-      <item>status_new = new_app.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ELSE.&quot;If the approver is Accountant</item>
+      <item>                CLEAR z6hra_trip_stats.</item>
+      <item>              ENDIF.</item>
+      <item>              status_new = new_app.</item>
+      <item>            ENDIF.</item>
+      <item>          ENDIF.</item>
+      <item>        ELSE.&quot;If the approver is Accountant</item>
       <item>*           Approval Status</item>
       <item>*            new_app = &apos;4&apos;.</item>
       <item>*            CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
@@ -326,62 +326,62 @@
       <item>*                    return         = return</item>
       <item>*               EXCEPTIONS</item>
       <item>*                    OTHERS         = 0.</item>
-      <item>ENDIF.</item>
-      <item>ELSE.</item>
-      <item>SELECT SINGLE * FROM t526 INTO wa_t526</item>
-      <item>WHERE werks EQ lv_sbmod</item>
-      <item>AND sachx EQ lc_aaa   &quot;&apos;AAA&apos;</item>
-      <item>AND usrid EQ approver.    &quot;sy-uname.</item>
-      <item>IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
-      <item>READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
-      <item>reinr = t_head-reinr</item>
-      <item>perio = periodnumber.</item>
+      <item>        ENDIF.</item>
+      <item>      ELSE.</item>
+      <item>        SELECT SINGLE * FROM t526 INTO wa_t526</item>
+      <item>         WHERE werks EQ lv_sbmod</item>
+      <item>           AND sachx EQ lc_aaa   &quot;&apos;AAA&apos;</item>
+      <item>           AND usrid EQ approver.    &quot;sy-uname.</item>
+      <item>        IF sy-subrc &lt;&gt; 0.       &quot;If approver is not accountant Put trip on hold</item>
+      <item>          READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
+      <item>                                     reinr = t_head-reinr</item>
+      <item>                                     perio = periodnumber.</item>
       <item/>
-      <item>IF t_head-schem  NE &apos;PL&apos;.</item>
-      <item>IF t_perio-antrg EQ &apos;4&apos;.</item>
-      <item>new_app = &apos;6&apos;.</item>
-      <item>CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
-      <item>EXPORTING</item>
-      <item>employeenumber = employeenumber</item>
-      <item>tripnumber     = tripnumber</item>
+      <item>          IF t_head-schem  NE &apos;PL&apos;.</item>
+      <item>            IF t_perio-antrg EQ &apos;4&apos;.</item>
+      <item>              new_app = &apos;6&apos;.</item>
+      <item>              CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
+      <item>               EXPORTING</item>
+      <item>                    employeenumber = employeenumber</item>
+      <item>                    tripnumber     = tripnumber</item>
       <item>*               PERIODNUMBER   = &apos;000&apos;                      &quot;XCIPSDETRG</item>
-      <item>periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
-      <item>approved_new   = new_app</item>
-      <item>IMPORTING</item>
-      <item>return         = return</item>
-      <item>EXCEPTIONS</item>
-      <item>OTHERS         = 0.</item>
-      <item>IF return-type = &apos;S&apos;.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>                    periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
+      <item>                    approved_new   = new_app</item>
+      <item>               IMPORTING</item>
+      <item>                    return         = return</item>
+      <item>               EXCEPTIONS</item>
+      <item>                    OTHERS         = 0.</item>
+      <item>              IF return-type = &apos;S&apos;.</item>
+      <item>                MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>                wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>                wa1_trip-pernr = employeenumber.</item>
+      <item>                wa1_trip-reinr = tripnumber.</item>
+      <item>                wa1_trip-ernam = sy-uname.</item>
+      <item>                wa1_trip-erdat = sy-datum.</item>
+      <item>                wa1_trip-ertim = sy-uzeit.</item>
+      <item>                MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>                MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ELSE.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
+      <item>                CLEAR z6hra_trip_stats.</item>
+      <item>              ELSE.</item>
+      <item>                MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>                wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>                wa1_trip-pernr = employeenumber.</item>
+      <item>                wa1_trip-reinr = tripnumber.</item>
+      <item>                wa1_trip-ernam = sy-uname.</item>
+      <item>                wa1_trip-erdat = sy-datum.</item>
+      <item>                wa1_trip-ertim = sy-uzeit.</item>
       <item/>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>z6hra_trip_stats = return-message.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>                MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>                z6hra_trip_stats = return-message.</item>
+      <item>                MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ENDIF.</item>
-      <item>status_new = new_app.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ELSE.&quot;If the approver is Accountant</item>
+      <item>                CLEAR z6hra_trip_stats.</item>
+      <item>              ENDIF.</item>
+      <item>              status_new = new_app.</item>
+      <item>            ENDIF.</item>
+      <item>          ENDIF.</item>
+      <item>        ELSE.&quot;If the approver is Accountant</item>
       <item>*           Approval Status</item>
       <item>*            new_app = &apos;4&apos;.</item>
       <item>*            CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
@@ -406,60 +406,60 @@
       <item>*                    return         = return</item>
       <item>*               EXCEPTIONS</item>
       <item>*                    OTHERS         = 0.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ELSEIF sy-subrc NE 0.</item>
-      <item>READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
-      <item>reinr = t_head-reinr</item>
-      <item>perio = periodnumber.</item>
+      <item>      ENDIF.</item>
+      <item>      ENDIF.</item>
+      <item>    ENDIF.</item>
+      <item>    ENDIF.</item>
+      <item>  ELSEIF sy-subrc NE 0.</item>
+      <item>    READ TABLE t_perio WITH KEY pernr = t_head-pernr</item>
+      <item>                               reinr = t_head-reinr</item>
+      <item>                               perio = periodnumber.</item>
       <item/>
-      <item>IF t_head-schem  NE &apos;PL&apos;.</item>
-      <item>IF t_perio-antrg EQ &apos;4&apos;.</item>
-      <item>new_app = &apos;6&apos;.</item>
-      <item>CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
-      <item>EXPORTING</item>
-      <item>employeenumber = employeenumber</item>
-      <item>tripnumber     = tripnumber</item>
+      <item>    IF t_head-schem  NE &apos;PL&apos;.</item>
+      <item>      IF t_perio-antrg EQ &apos;4&apos;.</item>
+      <item>        new_app = &apos;6&apos;.</item>
+      <item>        CALL FUNCTION &apos;BAPI_TRIP_CHANGE_STATUS&apos;</item>
+      <item>         EXPORTING</item>
+      <item>              employeenumber = employeenumber</item>
+      <item>              tripnumber     = tripnumber</item>
       <item>*           PERIODNUMBER   = &apos;000&apos;                      &quot;XCIPSDETRG</item>
-      <item>periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
-      <item>approved_new   = new_app</item>
-      <item>IMPORTING</item>
-      <item>return         = return</item>
-      <item>EXCEPTIONS</item>
-      <item>OTHERS         = 0.</item>
-      <item>IF return-type = &apos;S&apos;.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>              periodnumber   = periodnumber               &quot;XCIPSDETRG</item>
+      <item>              approved_new   = new_app</item>
+      <item>         IMPORTING</item>
+      <item>              return         = return</item>
+      <item>         EXCEPTIONS</item>
+      <item>              OTHERS         = 0.</item>
+      <item>        IF return-type = &apos;S&apos;.</item>
+      <item>          MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>          wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>          wa1_trip-pernr = employeenumber.</item>
+      <item>          wa1_trip-reinr = tripnumber.</item>
+      <item>          wa1_trip-ernam = sy-uname.</item>
+      <item>          wa1_trip-erdat = sy-datum.</item>
+      <item>          wa1_trip-ertim = sy-uzeit.</item>
+      <item>          MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>          MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ELSE.</item>
-      <item>MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
-      <item>wa1_trip-antrg = &apos;4&apos;.</item>
-      <item>wa1_trip-pernr = employeenumber.</item>
-      <item>wa1_trip-reinr = tripnumber.</item>
-      <item>wa1_trip-ernam = sy-uname.</item>
-      <item>wa1_trip-erdat = sy-datum.</item>
-      <item>wa1_trip-ertim = sy-uzeit.</item>
+      <item>          CLEAR z6hra_trip_stats.</item>
+      <item>        ELSE.</item>
+      <item>          MOVE-CORRESPONDING t_perio TO wa1_trip.</item>
+      <item>          wa1_trip-antrg = &apos;4&apos;.</item>
+      <item>          wa1_trip-pernr = employeenumber.</item>
+      <item>          wa1_trip-reinr = tripnumber.</item>
+      <item>          wa1_trip-ernam = sy-uname.</item>
+      <item>          wa1_trip-erdat = sy-datum.</item>
+      <item>          wa1_trip-ertim = sy-uzeit.</item>
       <item/>
-      <item>MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
-      <item>z6hra_trip_stats = return-message.</item>
-      <item>MODIFY z6hra_trip_stats.</item>
+      <item>          MOVE-CORRESPONDING wa1_trip TO z6hra_trip_stats.</item>
+      <item>          z6hra_trip_stats = return-message.</item>
+      <item>          MODIFY z6hra_trip_stats.</item>
       <item/>
-      <item>CLEAR z6hra_trip_stats.</item>
-      <item>ENDIF.</item>
-      <item>status_new = new_app.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>          CLEAR z6hra_trip_stats.</item>
+      <item>        ENDIF.</item>
+      <item>        status_new = new_app.</item>
+      <item>      ENDIF.</item>
+      <item>    ENDIF.</item>
+      <item>  ENDIF.</item>
       <item>*  ENDIF.</item>
       <item>*ENDIF.</item>
       <item>ENDIF.</item>
@@ -474,464 +474,36 @@
      </SOURCE>
     </ENH_HOOK_IMPL>
    </ENHANCEMENTS>
-   <SPACES>
+   <SOTR>
     <item>
-     <FULL_NAME>\FU:BAPI_TRIP_APPROVE\SE:END\EI</FULL_NAME>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>7</item>
-      <item>7</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>12</item>
-      <item>12</item>
-      <item>0</item>
-      <item>7</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>0</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>0</item>
-      <item>3</item>
-      <item>0</item>
-      <item>3</item>
-      <item>3</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>10</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>3</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>3</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>10</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>24</item>
-      <item>31</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>29</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>34</item>
-      <item>36</item>
-      <item>36</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-      <item>6</item>
-      <item>5</item>
-      <item>7</item>
-      <item>7</item>
-      <item>4</item>
-      <item>4</item>
-      <item>6</item>
-      <item>7</item>
-      <item>9</item>
-      <item>9</item>
-      <item>6</item>
-      <item>8</item>
-      <item>35</item>
-      <item>35</item>
-      <item>0</item>
-      <item>8</item>
-      <item>10</item>
-      <item>12</item>
-      <item>12</item>
-      <item>13</item>
-      <item>18</item>
-      <item>18</item>
-      <item>0</item>
-      <item>18</item>
-      <item>18</item>
-      <item>13</item>
-      <item>18</item>
-      <item>13</item>
-      <item>18</item>
-      <item>12</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>0</item>
-      <item>14</item>
-      <item>12</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>0</item>
-      <item>14</item>
-      <item>14</item>
-      <item>14</item>
-      <item>0</item>
-      <item>14</item>
-      <item>12</item>
-      <item>12</item>
-      <item>10</item>
-      <item>8</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>0</item>
-      <item>4</item>
-      <item>6</item>
-      <item>8</item>
-      <item>8</item>
-      <item>8</item>
-      <item>9</item>
-      <item>11</item>
-      <item>11</item>
-      <item>8</item>
-      <item>10</item>
-      <item>37</item>
-      <item>37</item>
-      <item>0</item>
-      <item>10</item>
-      <item>12</item>
-      <item>14</item>
-      <item>14</item>
-      <item>15</item>
-      <item>20</item>
-      <item>20</item>
-      <item>0</item>
-      <item>20</item>
-      <item>20</item>
-      <item>15</item>
-      <item>20</item>
-      <item>15</item>
-      <item>20</item>
-      <item>14</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>14</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>14</item>
-      <item>14</item>
-      <item>12</item>
-      <item>10</item>
-      <item>8</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>8</item>
-      <item>6</item>
-      <item>8</item>
-      <item>9</item>
-      <item>11</item>
-      <item>11</item>
-      <item>8</item>
-      <item>10</item>
-      <item>37</item>
-      <item>37</item>
-      <item>0</item>
-      <item>10</item>
-      <item>12</item>
-      <item>14</item>
-      <item>14</item>
-      <item>15</item>
-      <item>20</item>
-      <item>20</item>
-      <item>0</item>
-      <item>20</item>
-      <item>20</item>
-      <item>15</item>
-      <item>20</item>
-      <item>15</item>
-      <item>20</item>
-      <item>14</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>14</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>16</item>
-      <item>16</item>
-      <item>0</item>
-      <item>16</item>
-      <item>14</item>
-      <item>14</item>
-      <item>12</item>
-      <item>10</item>
-      <item>8</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>4</item>
-      <item>4</item>
-      <item>2</item>
-      <item>4</item>
-      <item>31</item>
-      <item>31</item>
-      <item>0</item>
-      <item>4</item>
-      <item>6</item>
-      <item>8</item>
-      <item>8</item>
-      <item>9</item>
-      <item>14</item>
-      <item>14</item>
-      <item>0</item>
-      <item>14</item>
-      <item>14</item>
-      <item>9</item>
-      <item>14</item>
-      <item>9</item>
-      <item>14</item>
-      <item>8</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>0</item>
-      <item>10</item>
-      <item>8</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>0</item>
-      <item>10</item>
-      <item>10</item>
-      <item>10</item>
-      <item>0</item>
-      <item>10</item>
-      <item>8</item>
-      <item>8</item>
-      <item>6</item>
-      <item>4</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
+     <HEADER>
+      <CONCEPT>4C8E61E4DDC43A27E1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>4C8E61E4DDC43A27E1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>077</LENGTH>
+       <TEXT>Enhancement - Travel Change Status - Expense Report</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
     </item>
-    <item>
-     <FULL_NAME>\FU:BAPI_TRIP_APPROVE\SE:BEGIN\EI</FULL_NAME>
-     <SPACES>
-      <item>0</item>
-     </SPACES>
-    </item>
-   </SPACES>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>Z6HR020B_TRAVEL_UPD_STATUS_ENH</OBJ_NAME>
+     <CONCEPT>4C8E61E4DDC43A27E1000000C0A80A1D</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
   </asx:values>
  </asx:abap>
 </abapGit>

@@ -20,14 +20,14 @@
      <SOURCE>
       <item/>
       <item>data: uid type char8,</item>
-      <item>uid_i TYPE i,</item>
-      <item>tripno type char10,</item>
-      <item>objkey type swo_typeid,</item>
-      <item>it_worklist type standard table of swr_wihdr,</item>
-      <item>wa_worklist type swr_wihdr,</item>
-      <item>it_container type standard table of swr_cont,</item>
-      <item>wa_container type swr_cont,</item>
-      <item>lp_trip_action TYPE ptrv_trip_action_m.</item>
+      <item>      uid_i TYPE i,</item>
+      <item>      tripno type char10,</item>
+      <item>      objkey type swo_typeid,</item>
+      <item>      it_worklist type standard table of swr_wihdr,</item>
+      <item>      wa_worklist type swr_wihdr,</item>
+      <item>      it_container type standard table of swr_cont,</item>
+      <item>      wa_container type swr_cont,</item>
+      <item>      lp_trip_action TYPE ptrv_trip_action_m.</item>
       <item/>
       <item>if status-approved = &apos;4&apos; or status-approved = &apos;6&apos;.</item>
       <item>uid = employeenumber.</item>
@@ -63,15 +63,15 @@
       <item>*read table it_container into wa_container with key element = &apos;CHANGE_FLAG&apos;.</item>
       <item>*if sy-subrc = 0.</item>
       <item>*  if wa_container-value = &apos;X&apos;.</item>
-      <item>IF uid = sy-uname.</item>
-      <item>IMPORT lp_trip_action FROM MEMORY ID &apos;USER_ACTION&apos;.</item>
-      <item>IF lp_trip_action = &apos;MOD&apos; OR lp_trip_action = &apos;SCCH&apos;.</item>
-      <item>clear return.</item>
-      <item>return-type       = &apos;E&apos;.</item>
-      <item>return-message_v1 = &apos;Changes not Possible : &apos;.</item>
-      <item>return-message_v2 = &apos;Trip Already Approved&apos;.</item>
-      <item>ENDIF.</item>
-      <item>ENDIF.</item>
+      <item>    IF uid = sy-uname.</item>
+      <item>      IMPORT lp_trip_action FROM MEMORY ID &apos;USER_ACTION&apos;.</item>
+      <item>      IF lp_trip_action = &apos;MOD&apos; OR lp_trip_action = &apos;SCCH&apos;.</item>
+      <item>        clear return.</item>
+      <item>        return-type       = &apos;E&apos;.</item>
+      <item>        return-message_v1 = &apos;Changes not Possible : &apos;.</item>
+      <item>        return-message_v2 = &apos;Trip Already Approved&apos;.</item>
+      <item>      ENDIF.</item>
+      <item>    ENDIF.</item>
       <item>*  endif.</item>
       <item>*endif.</item>
       <item>endif.</item>
@@ -86,78 +86,36 @@
      </SOURCE>
     </ENH_HOOK_IMPL>
    </ENHANCEMENTS>
-   <SPACES>
+   <SOTR>
     <item>
-     <FULL_NAME>\FU:BAPI_TRIP_GET_DETAILS\SE:END\EI</FULL_NAME>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>6</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-      <item>6</item>
-      <item>6</item>
-      <item>8</item>
-      <item>8</item>
-      <item>8</item>
-      <item>8</item>
-      <item>6</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-     </SPACES>
+     <HEADER>
+      <CONCEPT>50686D834BFA23FFE1000000C0A80A1D</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>50686D834BFA23FFE1000000C0A80A1D</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>081</LENGTH>
+       <TEXT>Validate Travel Reuests and changes in travel requests</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
     </item>
-   </SPACES>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>Z6HR020B_TRAVEL_CHECK</OBJ_NAME>
+     <CONCEPT>50686D834BFA23FFE1000000C0A80A1D</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
   </asx:values>
  </asx:abap>
 </abapGit>

@@ -545,21 +545,21 @@
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>MODULE %_BACK AT EXIT-COMMAND.</LINE>
+       <LINE>  MODULE %_BACK AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>MODULE %_INIT_PAI.</LINE>
+       <LINE>  MODULE %_INIT_PAI.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD  PCHOBJID-LOW.</LINE>
+       <LINE>  FIELD  PCHOBJID-LOW.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE %_PCHOBJID.</LINE>
+       <LINE>  MODULE %_PCHOBJID.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>ENDCHAIN.</LINE>
@@ -586,22 +586,22 @@
        <LINE>CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD  PCHOBJID-LOW.</LINE>
+       <LINE>  FIELD  PCHOBJID-LOW.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHSEARK .</LINE>
+       <LINE>  FIELD PCHSEARK .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHOBEG .</LINE>
+       <LINE>  FIELD PCHOBEG .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHOSTAT .</LINE>
+       <LINE>  FIELD PCHOSTAT .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ACC_STR .</LINE>
+       <LINE>  FIELD ACC_STR .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE %_BLOCK_1000000.</LINE>
+       <LINE>    MODULE %_BLOCK_1000000.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>ENDCHAIN.</LINE>
@@ -628,19 +628,19 @@
        <LINE>CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD $PERCK .</LINE>
+       <LINE>  FIELD $PERCK .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PER_TXT .</LINE>
+       <LINE>  FIELD PER_TXT .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD HOLDONLY .</LINE>
+       <LINE>  FIELD HOLDONLY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ORG_P .</LINE>
+       <LINE>  FIELD ORG_P .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE %_BLOCK_1000016.</LINE>
+       <LINE>    MODULE %_BLOCK_1000016.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>ENDCHAIN.</LINE>
@@ -654,40 +654,40 @@
        <LINE>CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD  PCHOBJID-LOW.</LINE>
+       <LINE>  FIELD  PCHOBJID-LOW.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHSEARK .</LINE>
+       <LINE>  FIELD PCHSEARK .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHOBEG .</LINE>
+       <LINE>  FIELD PCHOBEG .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHOSTAT .</LINE>
+       <LINE>  FIELD PCHOSTAT .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ACC_STR .</LINE>
+       <LINE>  FIELD ACC_STR .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD $PERCK .</LINE>
+       <LINE>  FIELD $PERCK .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PER_TXT .</LINE>
+       <LINE>  FIELD PER_TXT .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD HOLDONLY .</LINE>
+       <LINE>  FIELD HOLDONLY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ORG_P .</LINE>
+       <LINE>  FIELD ORG_P .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD SEL_BOX .</LINE>
+       <LINE>  FIELD SEL_BOX .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE %_END_OF_SCREEN.</LINE>
+       <LINE>  MODULE %_END_OF_SCREEN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE %_OK_CODE_1000.</LINE>
+       <LINE>  MODULE %_OK_CODE_1000.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>ENDCHAIN.</LINE>
@@ -697,88 +697,9 @@
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD PCHOBJID-LOW MODULE %_PCHOBJID-LOW_VAL .</LINE>
+       <LINE>  FIELD PCHOBJID-LOW MODULE %_PCHOBJID-LOW_VAL .</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>2</item>
-      <item>0</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-     </SPACES>
     </item>
    </DYNPROS>
    <TPOOL>
