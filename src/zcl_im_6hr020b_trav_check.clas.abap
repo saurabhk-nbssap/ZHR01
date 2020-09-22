@@ -33,73 +33,73 @@ method IF_EX_TRIP_WEB_CHECK~USER_CHECK_DEDUCTIONS.
 endmethod.
 
 
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_GENERAL_DATA.
-  data : wa_return type BAPIRET2.
-  data : lv_days type i.
-  DATA : LAST_DATE TYPE SY-DATUM.
-  data : lv_ergru type p0017-ergru.
-  data : V_SUM_REIMBU  type ptrv_shdr-SUM_REIMBU.
-  DATA : LV_MONATE TYPE KOMP-ANZ_MONATE.
+METHOD if_ex_trip_web_check~user_check_general_data.
+  DATA : wa_return TYPE bapiret2.
+  DATA : lv_days TYPE i.
+  DATA : last_date TYPE sy-datum.
+  DATA : lv_ergru TYPE p0017-ergru.
+  DATA : v_sum_reimbu  TYPE ptrv_shdr-sum_reimbu.
+  DATA : lv_monate TYPE komp-anz_monate.
 *** Travel Request
-  if general_data-schem EQ 'PL'.
-      select single ergru from pa0017 into lv_ergru
-                         where pernr eq employeenumber
-                           and begda le sy-datum
-                           and endda ge sy-datum.
+  IF general_data-schem EQ 'PL'.
+    SELECT SINGLE ergru FROM pa0017 INTO lv_ergru
+                       WHERE pernr EQ employeenumber
+                         AND begda LE sy-datum
+                         AND endda GE sy-datum.
 
-      if lv_ergru eq '1'.
-        wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'You are not authorized to submit this travel '.
-        wa_return-message_v2 = 'Request'.
-        append wa_return to return.
-        clear wa_return.
-
-      endif.
-    if general_data-datv1 lt sy-datum.
+    IF lv_ergru EQ '1'.
       wa_return-type = 'E'.
-      WA_RETURN-ID = 'ZHR01'.
-      WA_RETURN-NUMBER = '000'.
+      wa_return-id = 'ZHR01'.
+      wa_return-number = '000'.
+      wa_return-message_v1 = 'You are not authorized to submit this travel '.
+      wa_return-message_v2 = 'Request'.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+
+    ENDIF.
+    IF general_data-datv1 LT sy-datum.
+      wa_return-type = 'E'.
+      wa_return-id = 'ZHR01'.
+      wa_return-number = '000'.
       wa_return-message = 'You are not allowed to submit Past Travel Requests.'.
-      wa_return-MESSAGE_V1 = 'You are not allowed to submit Past Travel Requests.'.
-      append wa_return to return.
-      clear wa_return.
-    endif.
-  Else.
+      wa_return-message_v1 = 'You are not allowed to submit Past Travel Requests.'.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+    ENDIF.
+  ELSE.
 
 *** Validations for Travel Expenses Report Claims
-    if general_data-datb1 ge sy-datum.
+    IF general_data-datb1 GE sy-datum.
       wa_return-type = 'E'.
-      WA_RETURN-ID = 'ZHR01'.
-      WA_RETURN-NUMBER = '000'.
+      wa_return-id = 'ZHR01'.
+      wa_return-number = '000'.
       wa_return-message = 'You are not allowed to submit Future Travel expenses.'.
-      wa_return-MESSAGE_V1 = 'You are not allowed to submit Future Travel'.
+      wa_return-message_v1 = 'You are not allowed to submit Future Travel'.
       wa_return-message_v2 = ' expenses.'.
-      append wa_return to return.
-      clear wa_return.
-    endif.
-    if general_data-datv1 ge sy-datum.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+    ENDIF.
+    IF general_data-datv1 GE sy-datum.
       wa_return-type = 'E'.
-      WA_RETURN-ID = 'ZHR01'.
-      WA_RETURN-NUMBER = '000'.
+      wa_return-id = 'ZHR01'.
+      wa_return-number = '000'.
       wa_return-message = 'You are not allowed to submit Future Travel expenses.'.
-      wa_return-MESSAGE_V1 = 'You are not allowed to submit Future Travel'.
+      wa_return-message_v1 = 'You are not allowed to submit Future Travel'.
       wa_return-message_v2 = ' expenses.'.
-      append wa_return to return.
-      clear wa_return.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
 
     ELSE.
 
       CALL FUNCTION 'MONTHS_BETWEEN_TWO_DATES_NEW'
         EXPORTING
-          I_DATUM_BIS       = SY-DATUM
-          I_DATUM_VON       = general_data-datv1
-          I_KZ_INCL_BIS     = ' '
-          I_KZ_VOLLE_MONATE = ' '
+          i_datum_bis       = sy-datum
+          i_datum_von       = general_data-datv1
+          i_kz_incl_bis     = ' '
+          i_kz_volle_monate = ' '
         IMPORTING
-          E_MONATE          = LV_MONATE.
-      lv_days = SY-DATUM - general_data-datv1.
+          e_monate          = lv_monate.
+      lv_days = sy-datum - general_data-datv1.
       IF lv_days GT 45.
 *        wa_return-type = 'E'.
 *        WA_RETURN-ID = 'ZHR01'.
@@ -109,153 +109,215 @@ method IF_EX_TRIP_WEB_CHECK~USER_CHECK_GENERAL_DATA.
 *        append wa_return to return.
 *        clear wa_return.
       ENDIF.
-    endif.
-    if  general_data-schem eq '01'.
+    ENDIF.
+    IF  general_data-schem EQ '01'.
 
 
-      SELECT SINGLE SUM_REIMBU FROM PTRV_SHDR INTO V_SUM_REIMBU
-                                    WHERE PERNR = GENERAL_DATA-PERNR
-                                      AND REINR = GENERAL_DATA-REINR
-                                      and perio = general_data-perio.
-      if   V_SUM_REIMBU gt 20000.
+      SELECT SINGLE sum_reimbu FROM ptrv_shdr INTO v_sum_reimbu
+                                    WHERE pernr = general_data-pernr
+                                      AND reinr = general_data-reinr
+                                      AND perio = general_data-perio.
+      IF   v_sum_reimbu GT 20000.
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'Claim amount should not be more than Rs 20000'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'Claim amount should not be more than Rs 20000'.
 
-        append wa_return to return.
-        clear wa_return.
-      endif.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ENDIF.
 
-      select single ergru from pa0017 into lv_ergru
-                         where pernr eq employeenumber
-                           and begda le sy-datum
-                           and endda ge sy-datum.
+      SELECT SINGLE ergru FROM pa0017 INTO lv_ergru
+                         WHERE pernr EQ employeenumber
+                           AND begda LE sy-datum
+                           AND endda GE sy-datum.
 
-      if lv_ergru eq '1'.
+      IF lv_ergru EQ '1'.
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'You are not authorized to submit this expense'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'You are not authorized to submit this expense'.
 
-        append wa_return to return.
-        clear wa_return.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
 
-      endif.
+      ENDIF.
       CALL FUNCTION 'LAST_DAY_OF_MONTHS'
         EXPORTING
-          DAY_IN                  = GENERAL_DATA-DATV1
-       IMPORTING
-          LAST_DAY_OF_MONTH       = LAST_DATE
+          day_in            = general_data-datv1
+        IMPORTING
+          last_day_of_month = last_date
 *         EXCEPTIONS
-*           DAY_IN_NO_DATE          = 1
-*           OTHERS                  = 2
-                .
-      IF SY-SUBRC <> 0.
+*         DAY_IN_NO_DATE    = 1
+*         OTHERS            = 2
+        .
+      IF sy-subrc <> 0.
 * MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
 *         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
       ENDIF.
-      if general_data-datv1+6(2) eq '01'.
+      IF general_data-datv1+6(2) EQ '01'.
 
-        concatenate general_data-datv1+0(6) '15' into general_data-datb1.
-      endif.
+        CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
+      ENDIF.
 
-      if general_data-datv1+6(2) eq '16'.
-        concatenate general_data-datv1+0(6) last_date+6(2) into general_data-datb1.
-      endif.
-      if general_data-datv1+6(2) eq '01' and general_data-datb1+6(2) ne '15'.
+      IF general_data-datv1+6(2) EQ '16'.
+        CONCATENATE general_data-datv1+0(6) last_date+6(2) INTO general_data-datb1.
+      ENDIF.
+      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-        append wa_return to return.
-        clear wa_return.
-      elseif general_data-datv1+6(2) eq '16' and general_data-datb1+6(2) ne LAST_DATE+6(2).
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'Only forthnight claims are allowed'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE last_date+6(2).
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-        append wa_return to return.
-        clear wa_return.
-      elseif general_data-datv1+6(2) ne '01' and   general_data-datv1+6(2) ne '16'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'Only forthnight claims are allowed'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ELSEIF general_data-datv1+6(2) NE '01' AND   general_data-datv1+6(2) NE '16'.
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-        append wa_return to return.
-        clear wa_return.
-      Elseif general_data-datB1+6(2) ne '15' and  general_data-datB1+6(2) ne LAST_DATE+6(2).
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'Only forthnight claims are allowed'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ELSEIF general_data-datb1+6(2) NE '15' AND  general_data-datb1+6(2) NE last_date+6(2).
         wa_return-type = 'E'.
-        WA_RETURN-ID = 'ZHR01'.
-        WA_RETURN-NUMBER = '000'.
-        wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-        append wa_return to return.
-        clear wa_return.
-      endif.
-    elseif general_data-schem eq '02'.
-      select single ergru from pa0017 into lv_ergru
-                          where pernr eq employeenumber
-                            and begda le sy-datum
-                            and endda ge sy-datum.
-      if lv_ergru eq '1'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'Only forthnight claims are allowed'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ENDIF.
+    ELSEIF general_data-schem EQ '02'.
+      SELECT SINGLE ergru FROM pa0017 INTO lv_ergru
+                          WHERE pernr EQ employeenumber
+                            AND begda LE sy-datum
+                            AND endda GE sy-datum.
+      IF lv_ergru EQ '1'.
         CALL FUNCTION 'LAST_DAY_OF_MONTHS'
-EXPORTING
-DAY_IN                  = GENERAL_DATA-DATV1
-IMPORTING
-LAST_DAY_OF_MONTH       = LAST_DATE
+          EXPORTING
+            day_in            = general_data-datv1
+          IMPORTING
+            last_day_of_month = last_date
 *         EXCEPTIONS
-*           DAY_IN_NO_DATE          = 1
-*           OTHERS                  = 2
-.
-        IF SY-SUBRC <> 0.
+*           DAY_IN_NO_DATE    = 1
+*           OTHERS            = 2
+          .
+        IF sy-subrc <> 0.
 * MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
 *         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
         ENDIF.
 
-        if general_data-datv1+6(2) eq '01'.
+        IF general_data-datv1+6(2) EQ '01'.
 
-          concatenate general_data-datv1+0(6) '15' into general_data-datb1.
-        endif.
+          CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
+        ENDIF.
 
-        if general_data-datv1+6(2) eq '16'.
-          concatenate general_data-datv1+0(6) last_date+6(2) into general_data-datb1.
-        endif.
+        IF general_data-datv1+6(2) EQ '16'.
+          CONCATENATE general_data-datv1+0(6) last_date+6(2) INTO general_data-datb1.
+        ENDIF.
 
 
-        if general_data-datv1+6(2) eq '01' and general_data-datb1+6(2) ne '15'.
+        IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
           wa_return-type = 'E'.
-          WA_RETURN-ID = 'ZHR01'.
-          WA_RETURN-NUMBER = '000'.
-          wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-          append wa_return to return.
-          clear wa_return.
-        elseif general_data-datv1+6(2) eq '16' and general_data-datb1+6(2) ne LAST_DATE+6(2).
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '000'.
+          wa_return-message_v1 = 'Only forthnight claims are allowed'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+        ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE last_date+6(2).
           wa_return-type = 'E'.
-          WA_RETURN-ID = 'ZHR01'.
-          WA_RETURN-NUMBER = '000'.
-          wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-          append wa_return to return.
-          clear wa_return.
-        elseif general_data-datv1+6(2) ne '01' and   general_data-datv1+6(2) ne '16'.
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '000'.
+          wa_return-message_v1 = 'Only forthnight claims are allowed'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+        ELSEIF general_data-datv1+6(2) NE '01' AND   general_data-datv1+6(2) NE '16'.
           wa_return-type = 'E'.
-          WA_RETURN-ID = 'ZHR01'.
-          WA_RETURN-NUMBER = '000'.
-          wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-          append wa_return to return.
-          clear wa_return.
-        Elseif general_data-datB1+6(2) ne '15' and  general_data-datB1+6(2) ne LAST_DATE+6(2).
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '000'.
+          wa_return-message_v1 = 'Only forthnight claims are allowed'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+        ELSEIF general_data-datb1+6(2) NE '15' AND  general_data-datb1+6(2) NE last_date+6(2).
           wa_return-type = 'E'.
-          WA_RETURN-ID = 'ZHR01'.
-          WA_RETURN-NUMBER = '000'.
-          wa_return-MESSAGE_V1 = 'Only forthnight claims are allowed'.
-          append wa_return to return.
-          clear wa_return.
-        endif.
-      endif.
-    endif.
-  endif.
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '000'.
+          wa_return-message_v1 = 'Only forthnight claims are allowed'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
 
-endmethod.
+*************************************************************************************************
+******Remove duplicate trips within same period
+********WO-896****Start of change-22nd Sept 2020
+
+*****Get trip data for the Personnel number
+  SELECT SINGLE *
+    FROM ptrv_head
+    INTO @DATA(ls_trip)
+    WHERE pernr = @employeenumber
+    AND   datv1 = @general_data-datv1
+    AND   datb1 = @general_data-datb1.
+
+***if found for any other trip between this range give an error
+  IF sy-subrc = 0.
+    wa_return-type = 'E'.
+    wa_return-id = 'ZHR01'.
+    wa_return-number = '000'.
+    wa_return-message_v1 = 'You have already booked a trip in this period'.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
+
+*****Else check whetehr trip commences on the same date give and error
+  ELSE.
+
+    SELECT SINGLE *
+    FROM ptrv_head
+    INTO @ls_trip
+    WHERE pernr = @employeenumber
+    AND   datv1 = @general_data-datv1.
+
+****if trip found throw an error
+    IF sy-subrc = 0.
+      wa_return-type = 'E'.
+      wa_return-id = 'ZHR01'.
+      wa_return-number = '000'.
+      wa_return-message_v1 = 'You have already booked a trip starting from this date'.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+
+***ELse finally check whether trip ends on the same day
+    ELSE.
+
+      SELECT SINGLE *
+         FROM ptrv_head
+         INTO @ls_trip
+         WHERE pernr = @employeenumber
+         AND   datb1 = @general_data-datb1.
+
+****If trip found throw an error not to allow mutliple trips
+      IF sy-subrc = 0.
+        wa_return-type = 'E'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+      ENDIF.
+    ENDIF.
+
+  ENDIF.
+
+
+ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ITINERARY.
