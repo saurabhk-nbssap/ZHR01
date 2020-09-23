@@ -318,10 +318,15 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 
 
 *****23rd Sept20
-*************
+******If expense is 0 validation- Expense should not be zero
 
 
-
+*  wa_return-type = 'E'.
+*  wa_return-id = 'ZHR01'.
+*  wa_return-number = '000'.
+*  wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+*  APPEND wa_return TO return.
+*  CLEAR wa_return.
 
 ENDMETHOD.
 
