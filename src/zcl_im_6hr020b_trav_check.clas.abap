@@ -405,8 +405,25 @@ method IF_EX_TRIP_WEB_CHECK~USER_CHECK_RECEIPTS.
 endmethod.
 
 
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_RECE_COSTS_SPLIT.
-endmethod.
+METHOD if_ex_trip_web_check~user_check_rece_costs_split.
+
+*****23rd Sept20
+******If expense is 0 validation- Expense should not be zero
+  DATA : wa_return TYPE bapiret2,
+         cs_rec    TYPE split_of_receipt.
+
+  LOOP AT costdistribution_receipt INTO cs_rec.
+    IF cs_rec-auftl_abs <= 0.
+      wa_return-type   = 'E'.
+      wa_return-id     = 'ZHR01'.
+      wa_return-number = '000'.
+      wa_return-message_v1 = 'Expense reciept can not be Zero'.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+    ENDIF.
+  ENDLOOP.
+
+ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TEXT.
@@ -417,6 +434,10 @@ endmethod.
   endmethod.
 
 
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TRIP_COSTS_SPLIT.
-endmethod.
+METHOD if_ex_trip_web_check~user_check_trip_costs_split.
+
+
+
+
+ENDMETHOD.
 ENDCLASS.
