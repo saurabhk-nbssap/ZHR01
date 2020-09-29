@@ -1661,3 +1661,8 @@ swc_set_element container 'NEXT_AGENT' next_agent.
 swc_set_element container 'ORG_OBJECT' next_agent.
 
 end_method.
+
+BEGIN_METHOD GETCEO CHANGING CONTAINER.
+
+
+END_METHOD.
