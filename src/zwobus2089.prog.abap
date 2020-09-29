@@ -1666,7 +1666,7 @@ begin_method getceo changing container.
 
 DATA: ceo TYPE char1.
 
-SELECT SINGLE * FROM ztirp_workflow
+SELECT SINGLE * FROM ztrip_workflow
   INTO @DATA(ls_user)
   WHERE empcode = @object-key-employeenumber.
 IF ls_user IS NOT INITIAL.
