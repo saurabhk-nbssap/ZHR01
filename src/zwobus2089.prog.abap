@@ -1662,7 +1662,17 @@ swc_set_element container 'ORG_OBJECT' next_agent.
 
 end_method.
 
-BEGIN_METHOD GETCEO CHANGING CONTAINER.
+begin_method getceo changing container.
 
+DATA: ceo TYPE char1.
 
-END_METHOD.
+SELECT SINGLE * FROM ztirp_workflow
+  INTO @DATA(ls_user)
+  WHERE empcode = @object-key-employeenumber.
+IF ls_user IS NOT INITIAL.
+  ceo = 'X'.
+ENDIF.
+
+swc_set_element container 'CEO' ceo.
+
+end_method.
