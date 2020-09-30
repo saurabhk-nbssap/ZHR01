@@ -1664,15 +1664,17 @@ end_method.
 
 begin_method getceo changing container.
 
-DATA: ceo TYPE char1.
+DATA: lv_ceo TYPE tojtb-active.
 
 SELECT SINGLE * FROM ztrip_workflow
   INTO @DATA(ls_user)
   WHERE empcode = @object-key-employeenumber.
 IF ls_user IS NOT INITIAL.
-  ceo = 'X'.
+  lv_ceo = 'X'.
+ELSE.
+  lv_ceo = ''.
 ENDIF.
 
-swc_set_element container 'CEO' ceo.
+swc_set_element container 'CEO' lv_ceo.
 
 end_method.
