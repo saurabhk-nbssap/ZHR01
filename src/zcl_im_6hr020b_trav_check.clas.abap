@@ -213,7 +213,6 @@ METHOD if_ex_trip_web_check~user_check_general_data.
         ENDIF.
 
         IF general_data-datv1+6(2) EQ '01'.
-
           CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
         ENDIF.
 
@@ -259,74 +258,126 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 ******Remove duplicate trips within same period
 ********WO-896****Start of change-22nd Sept 2020
 
+  DATA : gv_last_date TYPE sy-datum.
+
+  CLEAR : gv_last_date.
+
+  SELECT SINGLE ergru FROM pa0017 INTO @DATA(gv_ergru)
+                        WHERE pernr EQ @employeenumber
+                          AND begda LE @sy-datum
+                          AND endda GE @sy-datum.
+  IF sy-subrc = 0.
+
+    CALL FUNCTION 'LAST_DAY_OF_MONTHS'
+      EXPORTING
+        day_in            = general_data-datv1
+      IMPORTING
+        last_day_of_month = gv_last_date
+*         EXCEPTIONS
+*       DAY_IN_NO_DATE    = 1
+*       OTHERS            = 2
+      .
+    IF sy-subrc <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+    ENDIF.
+
+********check Travel schema and Reimbursement Group for Meals/Accomm.
+    IF general_data-schem = '02' AND gv_ergru <> '2'.
+
+
 *****Get trip data for the Personnel number
-  SELECT SINGLE *
-    FROM ptrv_head
-    INTO @DATA(ls_trip)
-    WHERE pernr = @employeenumber
-    AND   datv1 = @general_data-datv1
-    AND   datb1 = @general_data-datb1.
+      SELECT SINGLE *
+        FROM ptrv_head
+        INTO @DATA(ls_trip)
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1
+        AND   datb1 = @general_data-datb1.
 
 ***if found for any other trip between this range give an error
-  IF sy-subrc = 0.
-    wa_return-type = 'E'.
-    wa_return-id = 'ZHR01'.
-    wa_return-number = '000'.
-    wa_return-message_v1 = 'You have already booked a trip in this period'.
-    APPEND wa_return TO return.
-    CLEAR wa_return.
+      IF sy-subrc = 0.
+        wa_return-type = 'E'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'You have already booked a trip in this period'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
 
 *****Else check whetehr trip commences on the same date give and error
-  ELSE.
+      ELSE.
 
-    SELECT SINGLE *
-    FROM ptrv_head
-    INTO @ls_trip
-    WHERE pernr = @employeenumber
-    AND   datv1 = @general_data-datv1.
+        SELECT SINGLE *
+        FROM ptrv_head
+        INTO @ls_trip
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1.
 
 ****if trip found throw an error
-    IF sy-subrc = 0.
-      wa_return-type = 'E'.
-      wa_return-id = 'ZHR01'.
-      wa_return-number = '000'.
-      wa_return-message_v1 = 'You have already booked a trip starting from this date'.
-      APPEND wa_return TO return.
-      CLEAR wa_return.
+        IF sy-subrc = 0.
+          wa_return-type = 'E'.
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '000'.
+          wa_return-message_v1 = 'You have already booked a trip starting from this date'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
 
 ***ELse finally check whether trip ends on the same day
-    ELSE.
+        ELSE.
 
-      SELECT SINGLE *
-         FROM ptrv_head
-         INTO @ls_trip
-         WHERE pernr = @employeenumber
-         AND   datb1 = @general_data-datb1.
+          SELECT SINGLE *
+             FROM ptrv_head
+             INTO @ls_trip
+             WHERE pernr = @employeenumber
+             AND   datb1 = @general_data-datb1.
 
 ****If trip found throw an error not to allow mutliple trips
-      IF sy-subrc = 0.
+          IF sy-subrc = 0.
+            wa_return-type = 'E'.
+            wa_return-id = 'ZHR01'.
+            wa_return-number = '000'.
+            wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+            APPEND wa_return TO return.
+            CLEAR wa_return.
+          ENDIF.
+        ENDIF.
+
+      ENDIF.
+
+********Cash schema check
+
+    ELSEIF general_data-schem = '01'  AND gv_ergru <> '1'.
+
+      IF general_data-datv1+6(2) EQ '01'.
+        CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
+      ENDIF.
+
+      IF general_data-datv1+6(2) EQ '16'.
+        CONCATENATE general_data-datv1+0(6) gv_last_date+6(2) INTO general_data-datb1.
+      ENDIF.
+
+      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) EQ '15'.
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
         wa_return-number = '000'.
         wa_return-message_v1 = 'You have already booked a trip ending with this date'.
         APPEND wa_return TO return.
         CLEAR wa_return.
+
+      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) EQ gv_last_date+6(2).
+        wa_return-type = 'E'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '000'.
+        wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+
       ENDIF.
+
     ENDIF.
 
   ENDIF.
 
-
-*****23rd Sept20
-******If expense is 0 validation- Expense should not be zero
-
-
-*  wa_return-type = 'E'.
-*  wa_return-id = 'ZHR01'.
-*  wa_return-number = '000'.
-*  wa_return-message_v1 = 'You have already booked a trip ending with this date'.
-*  APPEND wa_return TO return.
-*  CLEAR wa_return.
+  CLEAR : gv_last_date.
 
 ENDMETHOD.
 
