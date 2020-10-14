@@ -262,7 +262,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 
   CLEAR : gv_last_date.
 
-  SELECT SINGLE ergru FROM pa0017 INTO @DATA(gv_ergru)
+  SELECT SINGLE ergru FROM  pa0017 INTO @DATA(gv_ergru)
                         WHERE pernr EQ @employeenumber
                           AND begda LE @sy-datum
                           AND endda GE @sy-datum.
@@ -283,7 +283,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
     ENDIF.
 
 ********check Travel schema and Reimbursement Group for Meals/Accomm.
-    IF general_data-schem = '02' AND gv_ergru <> '2'.
+    IF general_data-schem = '02' AND gv_ergru = '2'.
 
 
 *****Get trip data for the Personnel number
@@ -345,7 +345,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 
 ********Cash schema check
 
-    ELSEIF general_data-schem = '01'  AND gv_ergru <> '1'.
+    ELSEIF general_data-schem = '01'  AND gv_ergru = '1'.
 
       IF general_data-datv1+6(2) EQ '01'.
         CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
@@ -355,7 +355,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
         CONCATENATE general_data-datv1+0(6) gv_last_date+6(2) INTO general_data-datb1.
       ENDIF.
 
-      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) EQ '15'.
+      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
         wa_return-number = '000'.
@@ -363,7 +363,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
         APPEND wa_return TO return.
         CLEAR wa_return.
 
-      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) EQ gv_last_date+6(2).
+      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE gv_last_date+6(2).
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
         wa_return-number = '000'.
@@ -464,7 +464,7 @@ METHOD if_ex_trip_web_check~user_check_rece_costs_split.
          cs_rec    TYPE split_of_receipt.
 
   LOOP AT costdistribution_receipt INTO cs_rec.
-    IF cs_rec-auftl_abs <= 0.
+    IF cs_rec-auftl_abs <= '0.00'.
       wa_return-type   = 'E'.
       wa_return-id     = 'ZHR01'.
       wa_return-number = '000'.
