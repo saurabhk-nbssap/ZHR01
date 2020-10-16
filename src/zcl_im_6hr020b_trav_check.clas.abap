@@ -22,10 +22,16 @@ CLASS ZCL_IM_6HR020B_TRAV_CHECK IMPLEMENTATION.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ADVANCES.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_CHANGES.
+
+  BREAK-POINT.
+
 endmethod.
 
 
@@ -40,6 +46,9 @@ METHOD if_ex_trip_web_check~user_check_general_data.
   DATA : lv_ergru TYPE p0017-ergru.
   DATA : v_sum_reimbu  TYPE ptrv_shdr-sum_reimbu.
   DATA : lv_monate TYPE komp-anz_monate.
+
+  BREAK-POINT.
+
 *** Travel Request
   IF general_data-schem EQ 'PL'.
     SELECT SINGLE ergru FROM pa0017 INTO lv_ergru
@@ -383,36 +392,58 @@ ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ITINERARY.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ITIN_COSTS_SPLIT.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_ADVANCES.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_CCC_RECEIPT.
 
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_DEDUCTIONS.
-endmethod.
 
-
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_ITINERARY.
+  BREAK-POINT.
 
 endmethod.
 
 
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_MILEAGE.
-endmethod.
+METHOD if_ex_trip_web_check~user_check_line_of_itinerary.
+
+  BREAK-POINT.
+
+ENDMETHOD.
+
+
+METHOD if_ex_trip_web_check~user_check_line_of_mileage.
+
+  BREAK-POINT.
+
+ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_RECEIPTS.
+
+  BREAK-POINT.
+
   data : wa_T706S_RECEIPT type T706S_RECEIPT.
   data  : wa_return type BAPIRET2.
   select single * from T706S_RECEIPT into wa_T706S_RECEIPT
@@ -441,22 +472,35 @@ endmethod.
 
 
   method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_TRANSPORT.
+
+    BREAK-POINT.
+
   endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_MILEAGE.
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_MILE_COSTS_SPLIT.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_RECEIPTS.
+
+  BREAK-POINT.
+
 endmethod.
 
 
 METHOD if_ex_trip_web_check~user_check_rece_costs_split.
+
+  BREAK-POINT.
 
 *****23rd Sept20
 ******If expense is 0 validation- Expense should not be zero
@@ -478,17 +522,23 @@ ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TEXT.
+
+  BREAK-POINT.
+
 endmethod.
 
 
   method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TRANSPORTS.
+
+    BREAK-POINT.
+
   endmethod.
 
 
 METHOD if_ex_trip_web_check~user_check_trip_costs_split.
 
 
-
+BREAK-POINT.
 
 ENDMETHOD.
 ENDCLASS.
