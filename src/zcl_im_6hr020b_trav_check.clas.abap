@@ -23,14 +23,11 @@ CLASS ZCL_IM_6HR020B_TRAV_CHECK IMPLEMENTATION.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ADVANCES.
 
-  BREAK-POINT.
 
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_CHANGES.
-
-  BREAK-POINT.
 
 endmethod.
 
@@ -46,8 +43,6 @@ METHOD if_ex_trip_web_check~user_check_general_data.
   DATA : lv_ergru TYPE p0017-ergru.
   DATA : v_sum_reimbu  TYPE ptrv_shdr-sum_reimbu.
   DATA : lv_monate TYPE komp-anz_monate.
-
-  BREAK-POINT.
 
 *** Travel Request
   IF general_data-schem EQ 'PL'.
@@ -307,7 +302,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
       IF sy-subrc = 0.
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
-        wa_return-number = '000'.
+        wa_return-number = '002'.
         wa_return-message_v1 = 'You have already booked a trip in this period'.
         APPEND wa_return TO return.
         CLEAR wa_return.
@@ -325,7 +320,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
         IF sy-subrc = 0.
           wa_return-type = 'E'.
           wa_return-id = 'ZHR01'.
-          wa_return-number = '000'.
+          wa_return-number = '002'.
           wa_return-message_v1 = 'You have already booked a trip starting from this date'.
           APPEND wa_return TO return.
           CLEAR wa_return.
@@ -343,7 +338,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
           IF sy-subrc = 0.
             wa_return-type = 'E'.
             wa_return-id = 'ZHR01'.
-            wa_return-number = '000'.
+            wa_return-number = '002'.
             wa_return-message_v1 = 'You have already booked a trip ending with this date'.
             APPEND wa_return TO return.
             CLEAR wa_return.
@@ -367,7 +362,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
       IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
-        wa_return-number = '000'.
+        wa_return-number = '002'.
         wa_return-message_v1 = 'You have already booked a trip ending with this date'.
         APPEND wa_return TO return.
         CLEAR wa_return.
@@ -375,7 +370,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
       ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE gv_last_date+6(2).
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
-        wa_return-number = '000'.
+        wa_return-number = '002'.
         wa_return-message_v1 = 'You have already booked a trip ending with this date'.
         APPEND wa_return TO return.
         CLEAR wa_return.
@@ -393,14 +388,11 @@ ENDMETHOD.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ITINERARY.
 
-  BREAK-POINT.
 
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_ITIN_COSTS_SPLIT.
-
-  BREAK-POINT.
 
 endmethod.
 
@@ -414,66 +406,104 @@ endmethod.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_CCC_RECEIPT.
 
-  BREAK-POINT.
 
 endmethod.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_DEDUCTIONS.
 
-  BREAK-POINT.
 
 endmethod.
 
 
 METHOD if_ex_trip_web_check~user_check_line_of_itinerary.
 
-  BREAK-POINT.
-
 ENDMETHOD.
 
 
 METHOD if_ex_trip_web_check~user_check_line_of_mileage.
 
-  BREAK-POINT.
 
 ENDMETHOD.
 
 
-method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_RECEIPTS.
+METHOD if_ex_trip_web_check~user_check_line_of_receipts.
 
-  BREAK-POINT.
+  DATA : wa_t706s_receipt TYPE t706s_receipt.
+  DATA  : wa_return TYPE bapiret2.
+  SELECT SINGLE * FROM t706s_receipt INTO wa_t706s_receipt
+                           WHERE morei EQ general_data-morei
+                             AND schem EQ general_data-schem
+                             AND spkzl EQ receipt-spkzl
+                             AND begda LE receipt-bldat
+                             AND endda GE receipt-bldat.
+  IF sy-subrc NE 0.
+    wa_return-type = 'E'.
+    wa_return-id = 'ZHR01'.
+    wa_return-number = '001'.
+    wa_return-message = 'This Expense Type is not allowed '.
+    wa_return-message_v1 = 'This Expense Type is not allowed '.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
 
-  data : wa_T706S_RECEIPT type T706S_RECEIPT.
-  data  : wa_return type BAPIRET2.
-  select single * from T706S_RECEIPT into wa_T706S_RECEIPT
-                           where morei eq general_data-morei
-                             and schem eq general_data-schem
-                             and spkzl eq receipt-spkzl
-                             and begda le receipt-bldat
-                             and endda ge receipt-bldat.
-  if sy-subrc ne 0.
-      wa_return-type = 'E'.
-      WA_RETURN-ID = 'ZHR01'.
-      WA_RETURN-NUMBER = '001'.
-      WA_RETURN-MESSAGE = 'This Expense Type is not allowed '.
-      wa_return-message_v1 = 'This Expense Type is not allowed '.
-      append wa_return to return.
-      clear wa_Return.
-
-  endif.
-  if general_data-schem eq '01'.
-     receipt-PAYOT = 'CC'.
-  ELSEIF general_data-schem eq '02'.
-      receipt-PAYOT = 'TC'.
+  ENDIF.
+  IF general_data-schem EQ '01'.
+    receipt-payot = 'CC'.
+  ELSEIF general_data-schem EQ '02'.
+    receipt-payot = 'TC'.
   ENDIF.
 
-endmethod.
+
+
+
+***************
+*****23rd Sept20
+******If expense is 0 validation- Expense should not be zero
+  DATA : "wa_return TYPE bapiret2,
+         cs_rec    TYPE split_of_receipt.
+
+  CLEAR wa_return.
+
+*  LOOP AT receipt INTO cs_rec.
+  IF receipt-betrg <= '0.00' OR  receipt-betrg <= 0 .
+    wa_return-type   = 'E'.
+    wa_return-id     = 'ZHR01'.
+    wa_return-number = '002'.
+    wa_return-message_v1 = 'Expense reciept can not be Zero 1'.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
+  ENDIF.
+
+  IF receipt-pay_amount <= '0.00' OR  receipt-pay_amount <= 0 .
+    wa_return-type   = 'E'.
+    wa_return-id     = 'ZHR01'.
+    wa_return-number = '002'.
+    wa_return-message_v1 = 'Expense reciept can not be Zero 2'.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
+  ENDIF.
+
+  LOOP AT costdistribution_receipts INTO cs_rec.
+    IF cs_rec-auftl_abs <= '0.00' OR cs_rec-auftl_abs <= 0.
+      wa_return-type   = 'E'.
+      wa_return-id     = 'ZHR01'.
+      wa_return-number = '002'.
+      wa_return-message_v1 = 'Expense reciept can not be Zero 3'.
+      APPEND wa_return TO return.
+      CLEAR wa_return.
+    ENDIF.
+  ENDLOOP.
+
+
+
+*AUFTL_ABS
+
+*BETRG
+*pay_amount
+ENDMETHOD.
 
 
   method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_TRANSPORT.
-
-    BREAK-POINT.
 
   endmethod.
 
@@ -486,7 +516,6 @@ endmethod.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_MILE_COSTS_SPLIT.
 
-  BREAK-POINT.
 
 endmethod.
 
@@ -500,45 +529,41 @@ endmethod.
 
 METHOD if_ex_trip_web_check~user_check_rece_costs_split.
 
-  BREAK-POINT.
-
-*****23rd Sept20
-******If expense is 0 validation- Expense should not be zero
-  DATA : wa_return TYPE bapiret2,
-         cs_rec    TYPE split_of_receipt.
-
-  LOOP AT costdistribution_receipt INTO cs_rec.
-    IF cs_rec-auftl_abs <= '0.00'.
-      wa_return-type   = 'E'.
-      wa_return-id     = 'ZHR01'.
-      wa_return-number = '000'.
-      wa_return-message_v1 = 'Expense reciept can not be Zero'.
-      APPEND wa_return TO return.
-      CLEAR wa_return.
-    ENDIF.
-  ENDLOOP.
+*  BREAK-POINT.
+*
+******23rd Sept20
+*******If expense is 0 validation- Expense should not be zero
+*  DATA : wa_return TYPE bapiret2,
+*         cs_rec    TYPE split_of_receipt.
+*
+*  LOOP AT costdistribution_receipt INTO cs_rec.
+*    IF cs_rec-auftl_abs <= '0.00'.
+*      wa_return-type   = 'E'.
+*      wa_return-id     = 'ZHR01'.
+*      wa_return-number = '000'.
+*      wa_return-message_v1 = 'Expense reciept can not be Zero'.
+*      APPEND wa_return TO return.
+*      CLEAR wa_return.
+*    ENDIF.
+*  ENDLOOP.
 
 ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TEXT.
 
-  BREAK-POINT.
 
 endmethod.
 
 
   method IF_EX_TRIP_WEB_CHECK~USER_CHECK_TRANSPORTS.
 
-    BREAK-POINT.
 
   endmethod.
 
 
 METHOD if_ex_trip_web_check~user_check_trip_costs_split.
 
-
-BREAK-POINT.
 
 ENDMETHOD.
 ENDCLASS.
