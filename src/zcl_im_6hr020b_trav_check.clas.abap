@@ -321,7 +321,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
           wa_return-type = 'E'.
           wa_return-id = 'ZHR01'.
           wa_return-number = '002'.
-          wa_return-message_v1 = 'You have already booked a trip starting from this date'.
+          wa_return-message_v1 = 'You have already booked a trip on same date'."starting from this date'.
           APPEND wa_return TO return.
           CLEAR wa_return.
 
@@ -339,7 +339,7 @@ METHOD if_ex_trip_web_check~user_check_general_data.
             wa_return-type = 'E'.
             wa_return-id = 'ZHR01'.
             wa_return-number = '002'.
-            wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+            wa_return-message_v1 = 'You have already booked a trip on same date'.
             APPEND wa_return TO return.
             CLEAR wa_return.
           ENDIF.
@@ -351,31 +351,92 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 
     ELSEIF general_data-schem = '01'  AND gv_ergru = '1'.
 
-      IF general_data-datv1+6(2) EQ '01'.
-        CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
-      ENDIF.
+*      IF general_data-datv1+6(2) EQ '01'.
+*        CONCATENATE general_data-datv1+0(6) '15' INTO general_data-datb1.
+*      ENDIF.
+*
+*      IF general_data-datv1+6(2) EQ '16'.
+*        CONCATENATE general_data-datv1+0(6) gv_last_date+6(2) INTO general_data-datb1.
+*      ENDIF.
+*
+*      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
+*        wa_return-type = 'E'.
+*        wa_return-id = 'ZHR01'.
+*        wa_return-number = '002'.
+*        wa_return-message_v1 = 'You have already booked a trip on same date'.
+*        APPEND wa_return TO return.
+*        CLEAR wa_return.
+*
+*      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE gv_last_date+6(2).
+*        wa_return-type = 'E'.
+*        wa_return-id = 'ZHR01'.
+*        wa_return-number = '002'.
+*        wa_return-message_v1 = 'You have already booked a trip on same date'.
+*        APPEND wa_return TO return.
+*        CLEAR wa_return.
+*
+*      ENDIF.
 
-      IF general_data-datv1+6(2) EQ '16'.
-        CONCATENATE general_data-datv1+0(6) gv_last_date+6(2) INTO general_data-datb1.
-      ENDIF.
+****************
+*      *****Get trip data for the Personnel number
+      SELECT SINGLE *
+        FROM ptrv_head
+        INTO @ls_trip
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1
+        AND   datb1 = @general_data-datb1.
 
-      IF general_data-datv1+6(2) EQ '01' AND general_data-datb1+6(2) NE '15'.
+***if found for any other trip between this range give an error
+      IF sy-subrc = 0.
         wa_return-type = 'E'.
         wa_return-id = 'ZHR01'.
         wa_return-number = '002'.
-        wa_return-message_v1 = 'You have already booked a trip ending with this date'.
+        wa_return-message_v1 = 'You have already booked a trip in this period'.
         APPEND wa_return TO return.
         CLEAR wa_return.
 
-      ELSEIF general_data-datv1+6(2) EQ '16' AND general_data-datb1+6(2) NE gv_last_date+6(2).
-        wa_return-type = 'E'.
-        wa_return-id = 'ZHR01'.
-        wa_return-number = '002'.
-        wa_return-message_v1 = 'You have already booked a trip ending with this date'.
-        APPEND wa_return TO return.
-        CLEAR wa_return.
+*****Else check whetehr trip commences on the same date give and error
+      ELSE.
+
+        SELECT SINGLE *
+        FROM ptrv_head
+        INTO @ls_trip
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1.
+
+****if trip found throw an error
+        IF sy-subrc = 0.
+          wa_return-type = 'E'.
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '002'.
+          wa_return-message_v1 = 'You have already booked a trip on same date'."starting from this date'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+
+***ELse finally check whether trip ends on the same day
+        ELSE.
+
+          SELECT SINGLE *
+             FROM ptrv_head
+             INTO @ls_trip
+             WHERE pernr = @employeenumber
+             AND   datb1 = @general_data-datb1.
+
+****If trip found throw an error not to allow mutliple trips
+          IF sy-subrc = 0.
+            wa_return-type = 'E'.
+            wa_return-id = 'ZHR01'.
+            wa_return-number = '002'.
+            wa_return-message_v1 = 'You have already booked a trip on same date'.
+            APPEND wa_return TO return.
+            CLEAR wa_return.
+          ENDIF.
+        ENDIF.
 
       ENDIF.
+
+
+**************
 
     ENDIF.
 
@@ -399,7 +460,6 @@ endmethod.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_LINE_OF_ADVANCES.
 
-  BREAK-POINT.
 
 endmethod.
 
@@ -459,47 +519,33 @@ METHOD if_ex_trip_web_check~user_check_line_of_receipts.
 ***************
 *****23rd Sept20
 ******If expense is 0 validation- Expense should not be zero
-  DATA : "wa_return TYPE bapiret2,
-         cs_rec    TYPE split_of_receipt.
-
-  CLEAR wa_return.
-
-*  LOOP AT receipt INTO cs_rec.
-  IF receipt-betrg <= '0.00' OR  receipt-betrg <= 0 .
-    wa_return-type   = 'E'.
-    wa_return-id     = 'ZHR01'.
-    wa_return-number = '002'.
-    wa_return-message_v1 = 'Expense reciept can not be Zero 1'.
-    APPEND wa_return TO return.
-    CLEAR wa_return.
-  ENDIF.
-
-  IF receipt-pay_amount <= '0.00' OR  receipt-pay_amount <= 0 .
-    wa_return-type   = 'E'.
-    wa_return-id     = 'ZHR01'.
-    wa_return-number = '002'.
-    wa_return-message_v1 = 'Expense reciept can not be Zero 2'.
-    APPEND wa_return TO return.
-    CLEAR wa_return.
-  ENDIF.
-
-  LOOP AT costdistribution_receipts INTO cs_rec.
-    IF cs_rec-auftl_abs <= '0.00' OR cs_rec-auftl_abs <= 0.
-      wa_return-type   = 'E'.
-      wa_return-id     = 'ZHR01'.
-      wa_return-number = '002'.
-      wa_return-message_v1 = 'Expense reciept can not be Zero 3'.
-      APPEND wa_return TO return.
-      CLEAR wa_return.
-    ENDIF.
-  ENDLOOP.
-
-
+  DATA : cs_rec    TYPE split_of_receipt.
 
 *AUFTL_ABS
 
 *BETRG
 *pay_amount
+
+  CLEAR wa_return.
+
+  IF receipt-betrg <= '0.00' OR  receipt-betrg <= 0 .
+    wa_return-type   = 'E'.
+    wa_return-id     = 'ZHR01'.
+    wa_return-number = '002'.
+    wa_return-message_v1 = 'Expense reciept can not be Zero'.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
+  ELSEIF receipt-pay_amount <= '0.00' OR  receipt-pay_amount <= 0 .
+    wa_return-type   = 'E'.
+    wa_return-id     = 'ZHR01'.
+    wa_return-number = '002'.
+    wa_return-message_v1 = 'Expense reciept can not be Zero'.
+    APPEND wa_return TO return.
+    CLEAR wa_return.
+  ENDIF.
+
+
+
 ENDMETHOD.
 
 
@@ -509,7 +555,7 @@ ENDMETHOD.
 
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_MILEAGE.
-  BREAK-POINT.
+
 
 endmethod.
 
@@ -522,30 +568,12 @@ endmethod.
 
 method IF_EX_TRIP_WEB_CHECK~USER_CHECK_RECEIPTS.
 
-  BREAK-POINT.
 
 endmethod.
 
 
 METHOD if_ex_trip_web_check~user_check_rece_costs_split.
 
-*  BREAK-POINT.
-*
-******23rd Sept20
-*******If expense is 0 validation- Expense should not be zero
-*  DATA : wa_return TYPE bapiret2,
-*         cs_rec    TYPE split_of_receipt.
-*
-*  LOOP AT costdistribution_receipt INTO cs_rec.
-*    IF cs_rec-auftl_abs <= '0.00'.
-*      wa_return-type   = 'E'.
-*      wa_return-id     = 'ZHR01'.
-*      wa_return-number = '000'.
-*      wa_return-message_v1 = 'Expense reciept can not be Zero'.
-*      APPEND wa_return TO return.
-*      CLEAR wa_return.
-*    ENDIF.
-*  ENDLOOP.
 
 ENDMETHOD.
 
