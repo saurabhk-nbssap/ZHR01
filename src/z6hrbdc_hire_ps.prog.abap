@@ -8912,6 +8912,29 @@ form create_user .
     wa_groups-TO_DAT = '99991231'.
     append wa_groups to it_groups.
 
+****Below changes is to assigned new role related to fund mgmt - mail from venu on - Wed 04/11/2020 16:35-- AUTO ROLE ATTACHMENT DURING HIRING
+      CLEAR: wa_groups.
+      wa_groups-AGR_NAME = 'ZFM_BUDGET_SUPP_TRFR'.
+      wa_groups-AGR_TEXT = 'Budget Maintain – Supplement & Transfer'.
+      wa_groups-FROM_DAT = sy-datum.
+      wa_groups-TO_DAT = '99991231'.
+      append wa_groups to it_groups.
+
+      CLEAR: wa_groups.
+      wa_groups-AGR_NAME = 'ZFM_REPORT'.
+      wa_groups-AGR_TEXT = 'ZFM_REPORT'.
+      wa_groups-FROM_DAT = sy-datum.
+      wa_groups-TO_DAT = '99991231'.
+      append wa_groups to it_groups.
+
+      CLEAR: wa_groups.
+      wa_groups-AGR_NAME = 'ZFM_MASTER_DISPLAY'.
+      wa_groups-AGR_TEXT = 'ZFM_MASTER_DISPLAY'.
+      wa_groups-FROM_DAT = sy-datum.
+      wa_groups-TO_DAT = '99991231'.
+      append wa_groups to it_groups.
+
+
 
     call function 'BAPI_USER_ACTGROUPS_ASSIGN'
       exporting
