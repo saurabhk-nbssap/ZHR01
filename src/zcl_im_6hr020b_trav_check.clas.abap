@@ -286,9 +286,9 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 *         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
     ENDIF.
 
+*******1)
 ********check Travel schema and Reimbursement Group for Meals/Accomm.
     IF general_data-schem = '02' AND gv_ergru = '2'.
-
 
 *****Get trip data for the Personnel number
       SELECT SINGLE *
@@ -347,6 +347,70 @@ METHOD if_ex_trip_web_check~user_check_general_data.
 
       ENDIF.
 
+*****************
+*****2) Travel schema- 01
+
+    ELSEIF general_data-schem = '02' AND gv_ergru = '1'.
+
+*****Get trip data for the Personnel number
+      SELECT SINGLE *
+        FROM ptrv_head
+        INTO @ls_trip
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1
+        AND   datb1 = @general_data-datb1.
+
+***if found for any other trip between this range give an error
+      IF sy-subrc = 0.
+        wa_return-type = 'E'.
+        wa_return-id = 'ZHR01'.
+        wa_return-number = '002'.
+        wa_return-message_v1 = 'You have already booked a trip in this period'.
+        APPEND wa_return TO return.
+        CLEAR wa_return.
+
+*****Else check whetehr trip commences on the same date give and error
+      ELSE.
+
+        SELECT SINGLE *
+        FROM ptrv_head
+        INTO @ls_trip
+        WHERE pernr = @employeenumber
+        AND   datv1 = @general_data-datv1.
+
+****if trip found throw an error
+        IF sy-subrc = 0.
+          wa_return-type = 'E'.
+          wa_return-id = 'ZHR01'.
+          wa_return-number = '002'.
+          wa_return-message_v1 = 'You have already booked a trip on same date'."starting from this date'.
+          APPEND wa_return TO return.
+          CLEAR wa_return.
+
+***ELse finally check whether trip ends on the same day
+        ELSE.
+
+          SELECT SINGLE *
+             FROM ptrv_head
+             INTO @ls_trip
+             WHERE pernr = @employeenumber
+             AND   datb1 = @general_data-datb1.
+
+****If trip found throw an error not to allow mutliple trips
+          IF sy-subrc = 0.
+            wa_return-type = 'E'.
+            wa_return-id = 'ZHR01'.
+            wa_return-number = '002'.
+            wa_return-message_v1 = 'You have already booked a trip on same date'.
+            APPEND wa_return TO return.
+            CLEAR wa_return.
+          ENDIF.
+        ENDIF.
+
+      ENDIF.
+
+
+************3)
 ********Cash schema check
 
     ELSEIF general_data-schem = '01'  AND gv_ergru = '1'.
