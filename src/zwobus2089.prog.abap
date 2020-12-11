@@ -1517,6 +1517,7 @@ DATA:
   tripbegindate TYPE ptrv_head-datv1,
   tripenddate   TYPE ptrv_head-datb1,
   lv_begindate  TYPE ptrv_head-datv1,
+  lv_fromdate    TYPE ptrv_head-dates,
   lv_enddate    TYPE ptrv_head-datb1.
 
 DATA :
@@ -1544,6 +1545,10 @@ SELECT SINGLE datb1 INTO lv_enddate  FROM ptrv_head
               WHERE pernr = object-key-employeenumber
                 AND reinr = object-key-tripnumber.
 
+  SELECT SINGLE dates INTO lv_fromdate  FROM ptrv_head
+              WHERE pernr = object-key-employeenumber
+                AND reinr = object-key-tripnumber.
+
 SELECT SINGLE ergru INTO lv_ergru FROM pa0017
        WHERE pernr = object-key-employeenumber
          AND endda >= sy-datum.
@@ -1559,7 +1564,7 @@ SELECT SINGLE sobid INTO lv_sobid FROM hrp1001
         AND  relat = '002'
         AND endda >= sy-datum.
 
-date1 = sy-datum.
+date1 = lv_fromdate."sy-datum.
 date2 = lv_enddate.
 
 CALL FUNCTION 'HR_HK_DIFF_BT_2_DATES'
