@@ -50,8 +50,8 @@ METHOD if_ex_trip_web_check~user_check_general_data.
                        WHERE pernr EQ employeenumber
                          AND begda LE sy-datum
                          AND endda GE sy-datum.
-
-    IF lv_ergru EQ '1'.
+*---Changed on 11/12/20202 ++++Sandeep
+    IF lv_ergru EQ '1' OR lv_ergru EQ '2'.
       wa_return-type = 'E'.
       wa_return-id = 'ZHR01'.
       wa_return-number = '000'.
