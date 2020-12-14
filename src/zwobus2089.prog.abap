@@ -1,23 +1,23 @@
 *****           Implementation of object type ZBUS2089             *****
 INCLUDE <object>.
-begin_data object. " Do not change.. DATA is generated
+BEGIN_DATA OBJECT. " Do not change.. DATA is generated
 * only private members may be inserted into structure private
 DATA:
-  " begin of private,
-  "   to declare private attributes remove comments and
-  "   insert private attributes here ...
-  " end of private,
-  BEGIN OF key,
-    employeenumber LIKE pskey-pernr,
-    tripnumber     LIKE bapitrip-tripno,
-  END OF key,
-  secondlvlmanager  TYPE zapprover-agent OCCURS 0,
-  employee_us       TYPE zapprover-agent,
-  second_lvl_email  TYPE pa0105-usrid_long,
-  firstlevelmanager TYPE pa0105-usrid_long,
-  no_of_days(255),
-  _pa0105           LIKE pa0105.
-end_data object. " Do not change.. DATA is generated
+" begin of private,
+"   to declare private attributes remove comments and
+"   insert private attributes here ...
+" end of private,
+  BEGIN OF KEY,
+      EMPLOYEENUMBER LIKE PSKEY-PERNR,
+      TRIPNUMBER LIKE BAPITRIP-TRIPNO,
+  END OF KEY,
+      SECONDLVLMANAGER TYPE ZAPPROVER-AGENT OCCURS 0,
+      EMPLOYEE_US TYPE ZAPPROVER-AGENT,
+      SECOND_LVL_EMAIL TYPE PA0105-USRID_LONG,
+      FIRSTLEVELMANAGER TYPE PA0105-USRID_LONG,
+      NO_OF_DAYS(255),
+      _PA0105 LIKE PA0105.
+END_DATA OBJECT. " Do not change.. DATA is generated
 *{insert TEDK913674
 * global data
 TABLES : pa0105.
