@@ -44,6 +44,11 @@ METHOD if_ex_trip_web_check~user_check_general_data.
   DATA : v_sum_reimbu  TYPE ptrv_shdr-sum_reimbu.
   DATA : lv_monate TYPE komp-anz_monate.
 
+  BREAK-POINT.
+  BREAK abap.
+
+  BREAK ibmsupport.
+
 *** Travel Request
   IF general_data-schem EQ 'PL'.
     SELECT SINGLE ergru FROM pa0017 INTO lv_ergru
