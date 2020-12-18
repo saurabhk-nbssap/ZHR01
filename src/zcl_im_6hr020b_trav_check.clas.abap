@@ -581,12 +581,11 @@ METHOD if_ex_trip_web_check~user_check_line_of_receipts.
 
 
 ***************
-*****23rd Sept20
+*****23rd Sept20********
 ******If expense is 0 validation- Expense should not be zero
   DATA : cs_rec    TYPE split_of_receipt.
 
 *AUFTL_ABS
-
 *BETRG
 *pay_amount
 
