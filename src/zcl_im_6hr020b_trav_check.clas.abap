@@ -42,10 +42,13 @@ METHOD if_ex_trip_web_check~user_check_general_data.
   DATA : last_date TYPE sy-datum.
   DATA : lv_ergru TYPE p0017-ergru.
   DATA : v_sum_reimbu  TYPE ptrv_shdr-sum_reimbu.
-  DATA : lv_monate TYPE komp-anz_monate.
+  DATA : lv_monate TYPE komp-anz_monate,
+         lv_user   TYPE sy-uname.
 
   BREAK-POINT.
   BREAK abap.
+  lv_user = '1633'.
+  BREAK lv_user.
 
   BREAK ibmsupport.
 
