@@ -437,13 +437,15 @@ start-of-selection.
                   break 10106.
 *{   REPLACE        SBXK900101                                        1
 *\                if sy-sysid = 'IRD' or sy-sysid = 'IRQ'. "below testing pending in QA , need to move this pgm in PRD for user licence changes done above code , hence checking only for IRD IRQ
-                  if zcl_helper=>is_development( ) or zcl_helper=>is_quality( ). "below testing pending in QA , need to move this pgm in PRD for user licence changes done above code , hence checking only for IRD IRQ
+*                  if zcl_helper=>is_development( ) or zcl_helper=>is_quality( ). "below testing pending in QA , need to move this pgm in PRD for user licence changes done above code , hence checking only for IRD IRQ
 *}   REPLACE
                     perform send_preconf_mail.
+                    if zcl_helper=>is_development( ) or zcl_helper=>is_quality( ).
                     if condense( to_upper( wa_upload-induct_snd ) ) eq 'Y'. " IHDK900899
                       perform send_induction_email using wa_upload. " IHDK900606: HR: S_K: ZHR_PS: Add induction/welcome email: 13.2.19
                     endif.
-                  endif.
+                    endif.
+*                  endif.
                 endif.
               endif.
             else.
