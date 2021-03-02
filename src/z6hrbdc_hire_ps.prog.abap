@@ -9626,7 +9626,7 @@ form send_induction_email using p_wa_upload like wa_upload.
   " End IHDK900899
 
   check lt_recipient is not initial.
-  data(lv_hr_gm_email) = condense( to_upper( 'sraj-icc@modi.com' ) ).
+  data(lv_hr_gm_email) = condense( to_upper( 'sraj@indofil.com' ) ).
   new zcl_email( )->send_induction_email(
     exporting
       iv_salutation = conv #( condense( |{ p_wa_upload-anred }. { p_wa_upload-vorna }| ) )
